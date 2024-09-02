@@ -1,0 +1,25 @@
+.tcformallinput {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+
+.gruop-tc {
+    width: 30%;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.tc-input {
+    width: 150px !important;
+    height: 100%;
+}

@@ -1,0 +1,68 @@
+.conten-master-form {
+    flex-direction: column;
+    width: 100%;
+}
+
+.allinput-content-master {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.label {
+    width: 100%;
+
+}
+
+.conten-section {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.two-btn-content-master {
+    padding: 14px;
+    width: 100%;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.form-first-line {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form-cm {
+    width: 25%;
+    height: 40px;
+}
+
+.inputtext {
+    height: 100%;
+    width: 100%;
+}
+
+.inputnumber {
+    height: 90%;
+    width: 50%;
+    background-color: white;
+}
+
+.select-cm {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+}
+
+
+input[type="color"] {
+    width: 100%;
+    height: 100%;
+}

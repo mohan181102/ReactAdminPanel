@@ -1,0 +1,32 @@
+.form-flashnews {
+    display: flex;
+  }
+  
+  .form-group-flashnews {
+    margin-bottom: 10px;
+  }
+  
+  .form-label-flashnews {
+    display: flex;
+    align-items: center;
+  }
+  
+  .form-input-flashnews {
+    margin-left: 10px;
+  }
+  
+  .form-button-flashnews {
+    width: 100px;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .form-button-flashnews:hover {
+    background-color: #0056b3;
+  }
+  

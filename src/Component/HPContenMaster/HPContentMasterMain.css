@@ -1,0 +1,16 @@
+.cm-priority {
+    color: black;
+}
+
+
+.main-color {
+    height: 30px;
+    width: auto;
+    padding: 0px;
+}
+
+
+.color-name {
+    font-size: 12px;
+    font-weight: 700;
+}

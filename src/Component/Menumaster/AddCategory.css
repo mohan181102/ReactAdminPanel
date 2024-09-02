@@ -1,0 +1,40 @@
+.main-add {
+    background-color: rgba(0, 0, 0, 0.438);
+    animation-name: addcategoryY;
+    animation-iteration-count: 1;
+    animation-duration: 300ms;
+}
+
+.close-main-add {
+    background-color: rgba(0, 0, 0, 0.438);
+    animation-name: closeaddcategoryY;
+    animation-iteration-count: 1;
+    animation-duration: 300ms;
+}
+
+.input-addcotegory {
+    width: 200px;
+}
+
+
+
+
+@keyframes addcategoryY {
+    0% {
+        transform: translateY(100%);
+    }
+
+    100% {
+        transform: translateY(0)
+    }
+}
+
+@keyframes closeaddcategoryY {
+    0% {
+        transform: translateY(0%);
+    }
+
+    100% {
+        transform: translateY(100)
+    }
+}

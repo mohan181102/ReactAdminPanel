@@ -1,0 +1,22 @@
+.view-cell {
+    width: auto;
+    height: auto;
+    cursor: pointer;
+    color: red;
+}
+
+.view-cell:hover {
+    filter: brightness(20px) !important;
+}
+
+.active-status {
+    color: green;
+}
+
+.inactive-status {
+    color: red;
+}
+
+.delete-button:disabled {
+    cursor: not-allowed;
+}

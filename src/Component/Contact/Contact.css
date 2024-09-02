@@ -1,0 +1,27 @@
+.message {
+    width: 200px;
+    min-height: 100px;
+    background-color: #fff;
+    text-align: left;
+    padding: 5px;
+    animation-name: messageAnimation;
+    animation-duration: 1500ms;
+    animation-iteration-count: 1;
+}
+
+@keyframes messageAnimation {
+    0% {
+        height: 0px;
+    }
+
+    100% {
+        height: auto;
+    }
+}
+
+
+.mesg-td {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

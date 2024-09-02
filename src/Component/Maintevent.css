@@ -1,0 +1,174 @@
+.gallery {
+    background-color: rgb(218, 217, 217);
+    width: 90%;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    height: 60vh;
+    overflow-y: scroll;
+}
+
+table {
+    /* position: relative; */
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    /* table-layout: fixed; */
+}
+
+thead {
+    background-color: black;
+    color: white;
+    /* width: 100%; */
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    /* height: 200px; */
+}
+
+th {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
+}
+
+.image-cell {
+    display: flex;
+    background-color: rgb(218, 217, 217);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    border-bottom: none;
+    overflow-x: scroll;
+    scrollbar-width: thin;
+}
+
+.image-parent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container {
+    display: inline-block;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.Name {
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    /* color: #ffffff; */
+    font-family: "Arial", sans-serif;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+}
+
+.update-button {
+    padding: 5px 5px;
+    background-color: #0068d6b9;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button {
+    padding: 5px 5px;
+    background-color: #ff2c2cc4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #ff3535;
+}
+
+.update-button:hover {
+    background-color: rgb(47, 158, 223);
+}
+
+/* .update-button {
+    display: block;
+    margin: 10px auto 0 auto;
+  } */
+
+.buttons {
+    display: flex;
+    margin: 10px auto 0 auto;
+    justify-content: space-evenly;
+    gap: 5px;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+}
+
+.edit-delet-btn {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-button {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.active {
+    color: green;
+}
+
+.inactive {
+    color: red;
+}
+
+.div-dlt {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-event {
+    width: 100px;
+    height: 100px;
+}
+
+.image-div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-button:disabled {
+    cursor: not-allowed;
+}

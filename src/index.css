@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+.showdelay {
+  animation-name: showdelay;
+  animation-duration: 300ms;
+  animation-iteration-count: 1;
+}
+
+@keyframes showdelay {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* upload-form !justify-end !p-[7px] !bg-[#f8f8f8] border !border-[#eee] */
+/* form css */
+.form-update {
+  justify-content: end !important;
+  padding: 7px !important;
+  background-color: #f8f8f8;
+  border: 1px solid #eee;
+}
+
+/* form-group min-w-[150px] max-w-auto  flex flex-col p-[5px] !items-start justify-center */
+/* form gruop */
+.form-gruop-update {
+  min-width: 150px;
+  max-width: auto !important;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  align-items: start;
+  justify-content: center;
+}
+
+
+/* text-[12px] font-bold */
+/* form label */
+.form-label-update {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+/* className={`!h-[40px] !w-[200px]`} */
+.form-input-update {
+  height: 40px !important;
+  width: 200px;
+}
+
+/* all form input */
+/* w-full h-auto flex items-center justify-start */
+.allinput-update {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+/*
+form-input-update 
+form-label-update
+*/
+
+/* form-btn */
+/* flex flex-col items-end justify-center gap-2 */
+.form-btn-update {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+
+/* className=" w-auto h-auto p-[5px] text-white rounded-md bg-[#286090]" */
+.form-submit-btn-update {
+  width: auto;
+  height: auto;
+  padding: 5px;
+  color: white;
+  background-color: #286090;
+  border-radius: 0.4rem;
+}
+
+
+/* className="w-auto h-auto p-[5px] text-white rounded-md bg-[#bbbbbb]" */
+.form-cancel-btn-update {
+  width: auto;
+  height: auto;
+  padding: 5px;
+  color: white;
+  background-color: #bbbbbb;
+  border-radius: 0.4rem;
+}
+
+
+
+/* design form table */
+
+.main-body-update {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+}
+
+/* className={`text-[14px] border-none font-bold`} */
+.th-update {
+  font-size: 14px;
+  border: none;
+  font-weight: 700;
+}
+
+.td-cell {
+  border: 1px solid #ccc;
+}
+
+/* 
+main-body-update
+th-update 
+td-cell
+*/
+
+td {
+  padding: 0px !important;
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}

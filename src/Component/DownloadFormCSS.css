@@ -1,0 +1,25 @@
+ .update-file {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: start;
+     width: auto;
+     font-size: 10px;
+
+ }
+
+ .two-btn {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     flex-direction: column;
+     gap: 4px;
+ }
+
+ .clear {
+     background-color: gray;
+ }
+
+ .clear:hover {
+     background-color: gray;
+ }

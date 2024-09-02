@@ -1,0 +1,47 @@
+.upload-form {
+    height: auto;
+    flex-wrap: wrap;
+}
+
+.form-gruop {
+    min-width: 140px;
+}
+
+
+input[type="number"] {
+    height: 30px;
+
+    border: none;
+    outline: none;
+    padding-left: 10px;
+    border: 1px solid #ccc;
+    /* border-radius: 10px; */
+}
+
+input[type="text"] {
+    /* width: 120px; */
+}
+
+input[type="file"] {
+
+    /* width: 200px; */
+}
+
+.all-input {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.form-gruop {
+    /* min-width: 200px; */
+}
+
+.testimonial-btn {
+    flex-direction: row;
+}
