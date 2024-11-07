@@ -42,6 +42,10 @@ import UserCreateForm from "./Component/UserCreateForm/UserCreateForm";
 import { jwtDecode } from "jwt-decode";
 import BlacklistedUser from "./Component/BlacklistedUser/BlacklistedUser";
 import RouteAccessCheck from "./utill/RouteAccessCheck";
+import JsonObject from "./Component/JsonObject/JsonObject";
+import Employee from "./Component/EmployeeDownload/Employee";
+import Careermain from "./Component/Career/Careermain";
+import Career from "./Component/Career/Career";
 
 
 function App() {
@@ -136,6 +140,15 @@ function App() {
           </RouteAccessCheck>
         </Authentication>} />
 
+        <Route path="/jsonobject" element={
+          <Authentication>
+            <RouteAccessCheck>
+              <JsonObject />
+            </RouteAccessCheck>
+          </Authentication>
+        } />
+
+
         <Route path="/tcissued" element={
           <Authentication>
             <RouteAccessCheck>
@@ -147,6 +160,20 @@ function App() {
           <Authentication>
             <RouteAccessCheck>
               <Contact />
+            </RouteAccessCheck>
+          </Authentication>} />
+
+        <Route path="/employee" element={
+          <Authentication>
+            <RouteAccessCheck>
+              <Employee />
+            </RouteAccessCheck>
+          </Authentication>} />
+
+        <Route path="/career" element={
+          <Authentication>
+            <RouteAccessCheck>
+              <Career />
             </RouteAccessCheck>
           </Authentication>} />
 

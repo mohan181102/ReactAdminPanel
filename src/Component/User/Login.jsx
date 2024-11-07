@@ -36,8 +36,6 @@ const Login = () => {
             } else {
                 return window.alert(`${result?.message}`)
             }
-
-
         } catch (error) {
             console.log("Error for login user" + error)
             window.alert(`Log in failed. Please try again`, error.message)

@@ -206,8 +206,171 @@ const AddPricemaster = ({ toggle, settoggle, formtitle, page = false, GruopName 
 
 
     return (
-        <div className={`main-add ${settoggle === false ? "close-main-add" : ""} flex-col z-[200] overflow-y-auto gap-8 fixed w-full sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/4 overscroll-auto py-8 h-full top-0 left-0 flex items-center justify-center bg-gray-100`}>
-            <div className="w-full rounded-lg shadow-lg bg-white p-6">
+        // <div className={`main-add ${settoggle === false ? "close-main-add" : ""} flex-col   z-[200] overflow-y-auto gap-8 fixed w-full sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/4 overscroll-auto py-8 h-full top-[100px]  flex items-center justify-center bg-gray-100`}>
+        //     <div className="w-full rounded-lg shadow-lg bg-white p-6">
+        //         <div className="flex items-center justify-between mb-6">
+        //             <h1 className="text-xl font-bold bg-gray-800 text-white py-2 px-4 rounded-md">{formtitle || "Add Category"}</h1>
+        //             <button className="p-2 bg-red-600 rounded-full text-white text-lg" onClick={() => settoggle()}>
+        //                 <Icon icon="raphael:cross" />
+        //             </button>
+        //         </div>
+
+        //         <form onSubmit={handlesubmit} className="space-y-6">
+        //             {field.map((item, index) => {
+        //                 let inputElement;
+
+        //                 switch (item.type) {
+        //                     case "text":
+        //                         inputElement = (
+        //                             <div key={index} className="flex flex-col space-y-2 bg-gray-200 p-4 rounded-lg">
+        //                                 <label className="text-sm font-medium">{item.name}</label>
+        //                                 <input
+        //                                     defaultValue={
+        //                                         item.name === "url" ? "/page" :
+        //                                             item.name === "PlanName" ? UpdatePMId != null ? UpdatePMPlanName : "" :
+        //                                                 ""
+        //                                     }
+        //                                     onChange={(e) => {
+        //                                         if (item.name === "PlanName") {
+        //                                             UpdatePMId != null ? setUpdatePMPlanName(e.target.value) : setPlanName(e.target.value);
+        //                                         } else if (item.name === "url") {
+        //                                             UpdatePMId != null ? setUpdatePMUrl(e.target.value) : seturl(e.target.value);
+        //                                         }
+        //                                     }}
+        //                                     className="border border-gray-300 rounded-md p-2 text-sm"
+        //                                     type={item.type}
+        //                                     placeholder={item.placeholder}
+        //                                 />
+        //                             </div>
+        //                         );
+        //                         break;
+        //                     case "option":
+        //                         inputElement = (
+        //                             <div key={index} className="flex flex-col space-y-2 bg-gray-200 p-4 rounded-lg">
+        //                                 <label className="text-sm font-medium">Category</label>
+        //                                 <select
+        //                                     onChange={(e) => {
+        //                                         UpdatePMId != null ? setUpdatePricemasterCategory(e.target.value) : setCategory(e.target.value);
+        //                                     }}
+        //                                     className="border border-gray-300 rounded-md p-2 text-sm"
+        //                                 >
+        //                                     {UpdatePMId != null && <option>{UpdatePricemasterCategory}</option>}
+        //                                     {option.map((optionItem, i) => (
+        //                                         <option key={i}>{optionItem}</option>
+        //                                     ))}
+        //                                 </select>
+        //                             </div>
+        //                         );
+        //                         break;
+        //                     case "number":
+        //                         inputElement = (
+        //                             <div key={index} className="flex flex-col space-y-2 bg-gray-200 p-4 rounded-lg">
+        //                                 <label className="text-sm font-medium">{item.name}</label>
+        //                                 <input
+        //                                     defaultValue={UpdatePMId != null ? UpdatePMPriority : ""}
+        //                                     onChange={(e) => {
+        //                                         UpdatePMId != null ? setUpdatePMPriority(e.target.value) : setPriority(e.target.value);
+        //                                     }}
+        //                                     className="border border-gray-300 rounded-md p-2 text-sm"
+        //                                     type={item.type}
+        //                                     placeholder={item.placeholder}
+        //                                 />
+        //                             </div>
+        //                         );
+        //                         break;
+        //                     case "file":
+        //                         inputElement = (
+        //                             <div key={index} className="flex flex-col space-y-2 bg-gray-200 p-4 rounded-lg">
+        //                                 <label className="text-sm font-medium">{item.name}</label>
+        //                                 <input
+        //                                     onChange={e => setImagePreviewFuction(e)}
+        //                                     className="border border-gray-300 rounded-md p-2 text-sm"
+        //                                     type={item.type}
+        //                                 />
+        //                             </div>
+        //                         );
+        //                         break;
+        //                     case "boolean":
+        //                         inputElement = (
+        //                             <div key={index} className="flex flex-col space-y-2 bg-gray-200 p-4 rounded-lg">
+        //                                 <label className="text-sm font-medium">{item.name}</label>
+        //                                 <select
+        //                                     onChange={(e) => {
+        //                                         e.target.value === "True" ? UpdatePMId != null ? setUpdatePMStatus(true) : setStatus(true) : UpdatePMId != null ? setUpdatePMStatus(false) : setStatus(false);
+        //                                     }}
+        //                                     className="border border-gray-300 rounded-md p-2 text-sm"
+        //                                 >
+        //                                     <option>{UpdatePMId != null ? (UpdatePMStatus ? "True" : "False") : "--select--"}</option>
+        //                                     <option>True</option>
+        //                                     <option>False</option>
+        //                                 </select>
+        //                             </div>
+        //                         );
+        //                         break;
+        //                     case "textarea":
+        //                         inputElement = (
+        //                             <div key={index} className="flex flex-col space-y-2 bg-gray-200 p-4 rounded-lg">
+        //                                 <label className="text-sm font-medium">{item.name}</label>
+        //                                 <JoditEditor
+        //                                     ref={editor}
+        //                                     value={UpdatePMId != null ? UpdatePMTextarea : content}
+        //                                     tabIndex={1}
+        //                                     onBlur={newContent => UpdatePMId != null ? setUpdatePMTextArea(content) : setContent(newContent)}
+        //                                     className="w-full border border-gray-300 rounded-md p-2 text-sm"
+        //                                 />
+        //                             </div>
+        //                         );
+        //                         break;
+        //                     case "preview":
+        //                         inputElement = (
+        //                             <div key={index} className="flex flex-col space-y-2 bg-gray-200 p-4 rounded-lg">
+        //                                 <label className="text-sm font-medium">{item.name}</label>
+        //                                 <img
+        //                                     className="w-full h-auto max-h-60 object-cover rounded-md"
+        //                                     src={UpdatePMId != null ? UpdatePMImage : ImagePreview}
+        //                                     alt="--Preview--"
+        //                                 />
+        //                             </div>
+        //                         );
+        //                         break;
+        //                     default:
+        //                         inputElement = null;
+        //                 }
+
+        //                 return inputElement;
+        //             })}
+
+        //             <div className="flex justify-end space-x-4">
+        //                 <button
+        //                     type={UpdatePMId == null ? "submit" : "button"}
+        //                     onClick={() => UpdatePMId != null ? updateHandler() : null}
+        //                     className="bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition"
+        //                 >
+        //                     {UpdatePMId != null ? "UPDATE" : "CREATE"}
+        //                 </button>
+        //                 <button
+        //                     type={UpdatePMId == null ? "submit" : "button"}
+        //                     onClick={() => settoggle(false)}
+        //                     className="bg-gray-600 text-white py-2 px-4 rounded-md hover:bg-gray-700 transition"
+        //                 >
+        //                     CANCEL
+        //                 </button>
+
+        //                 {UpdatePMId != null && (
+
+        //                     <button
+        //                         onClick={clearHandler}
+        //                         className="bg-gray-600 text-white py-2 px-4 rounded-md hover:bg-gray-700 transition"
+        //                     >
+        //                         CLEAR
+        //                     </button>
+        //                 )}
+        //             </div>
+        //         </form>
+        //     </div>
+        // </div>
+        <div className={`main-add ${settoggle === false ? "close-main-add" : ""} flex-col z-[200] overflow-y-auto gap-8 fixed w-[100vw] h-[100vh] sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/4 overscroll-auto py-8  top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center bg-gray-100 shadow-lg rounded-lg`}>
+            <div className="w-[70vw] h-[80vh] overflow-y-scroll rounded-lg shadow-lg bg-white p-6">
                 <div className="flex items-center justify-between mb-6">
                     <h1 className="text-xl font-bold bg-gray-800 text-white py-2 px-4 rounded-md">{formtitle || "Add Category"}</h1>
                     <button className="p-2 bg-red-600 rounded-full text-white text-lg" onClick={() => settoggle()}>
@@ -227,8 +390,7 @@ const AddPricemaster = ({ toggle, settoggle, formtitle, page = false, GruopName 
                                         <input
                                             defaultValue={
                                                 item.name === "url" ? "/page" :
-                                                    item.name === "PlanName" ? UpdatePMId != null ? UpdatePMPlanName : "" :
-                                                        ""
+                                                    item.name === "PlanName" ? UpdatePMId != null ? UpdatePMPlanName : "" : ""
                                             }
                                             onChange={(e) => {
                                                 if (item.name === "PlanName") {
@@ -357,7 +519,6 @@ const AddPricemaster = ({ toggle, settoggle, formtitle, page = false, GruopName 
                         </button>
 
                         {UpdatePMId != null && (
-
                             <button
                                 onClick={clearHandler}
                                 className="bg-gray-600 text-white py-2 px-4 rounded-md hover:bg-gray-700 transition"

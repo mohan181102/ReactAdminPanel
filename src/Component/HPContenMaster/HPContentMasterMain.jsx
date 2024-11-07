@@ -17,7 +17,6 @@ const HPContentMasterMain = () => {
         UpdateBgcolor, setBgcolor, } = useContext(UpdateContex)
 
 
-    useEffect(() => fetdata, [])
 
 
     // FETCH DATA
@@ -36,6 +35,7 @@ const HPContentMasterMain = () => {
     }
 
 
+    useEffect(() => { fetdata() }, [])
     // DELETE METHOD
     const deletehandler = async (id = null) => {
 
@@ -58,7 +58,7 @@ const HPContentMasterMain = () => {
                 }
             )
                 .then((res) => res.status == 200 ? window.alert("Content deleted") : null)
-                .then(window.location.reload())
+                .then(() => window.location.reload())
                 .catch((err) => window.alert("Content deleted", err))
             fetdata()
         } catch (error) {

@@ -47,6 +47,7 @@ select {
   overflow-y: scroll;
   scrollbar-width: thin;
 }
+
 .buttons {
   display: flex;
   align-items: center;
@@ -93,9 +94,11 @@ select {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+
 .block {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 10px;
 }
 
 .read-message {

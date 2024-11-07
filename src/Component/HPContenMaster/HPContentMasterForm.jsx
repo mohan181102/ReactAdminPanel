@@ -54,6 +54,7 @@ const HPContentMasterForm = () => {
                 }
             )
                 .then((res) => res.status == 200 ? window.alert("Successfully created Content") : null)
+                .then(() => window.location.reload())
                 .catch((err) => window.alert("Error creating Content", err));
 
         } catch (error) {
@@ -76,7 +77,7 @@ const HPContentMasterForm = () => {
 
     // UPDATE
     const updateHandler = async () => {
-
+        debugger
         const confirm = window.confirm('Are you sure you want to update this Content?')
         if (!confirm) return
 
@@ -93,6 +94,7 @@ const HPContentMasterForm = () => {
                 }
             })
                 .then((res) => res.status == 200 ? window.alert("Successfully updated Content") : null)
+                .then(() => window.location.reload())
                 .catch((err) => window.alert("Error updating Content", err));
         } catch {
             window.alert("!Error updating Content")
@@ -117,7 +119,7 @@ const HPContentMasterForm = () => {
                                 placeholder={`Enter Title`}
                                 id="name"
                                 defaultValue={UpdateCMTitle}
-                                onChange={(e) => setTitle(e.target.value)}
+                                onChange={(e) => UpdateCMId != null ? setUpdateCMTitle(e.target.value) : setTitle(e.target.value)}
                                 className='form-input-update'
                                 required
                             />
@@ -129,8 +131,9 @@ const HPContentMasterForm = () => {
                                 type="color"
                                 id="url"
                                 value={UpdateBgcolor != null ? UpdateBgcolor : BackColor}
-                                onChange={(e) => setBackcolor(e.target.value)}
-                                className='form-input-update '
+                                onChange={(e) => UpdateBgcolor != null ? setBgcolor(e.target.value) : setBackcolor(e.target.value)}
+                                style={{ height: '40px' }}
+                                className='form-input-update'
                                 required
                             />
                             {

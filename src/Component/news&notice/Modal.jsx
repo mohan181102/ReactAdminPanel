@@ -28,6 +28,10 @@ const Modal = ({
     setnewImage(e.target.files[0]);
   };
 
+
+
+
+
   const handlesubmit = () => {
     const formdata = new FormData();
     formdata.append("Title", fTitle);
@@ -38,7 +42,7 @@ const Modal = ({
     formdata.append("Type", fType);
 
     console.log("Image ", newImage);
-    onSubmit(formdata,currentid)
+    onSubmit(formdata, currentid)
 
     setnewImage(" ");
     onClose();

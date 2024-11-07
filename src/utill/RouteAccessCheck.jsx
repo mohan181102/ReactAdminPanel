@@ -91,6 +91,18 @@ const RouteAccessCheck = ({ children }) => {
             name: "Event",
             route: "/Event"
         },
+        {
+            name: "JsonObject",
+            route: "/jsonobject"
+        },
+        {
+            name: "Employee",
+            route: "/employee"
+        },
+        {
+            name: "Career",
+            route: "/career"
+        }
 
     ]
 
@@ -120,16 +132,13 @@ const RouteAccessCheck = ({ children }) => {
     //     return null; // Return null if no token is present to avoid rendering the children
     // }
     const check = isAuthorized()
+    debugger
+    if (allowfield != undefined && allowfield.length != 0) {
 
-    if (check || allowfield.includes("all")) {
-        return children;
+        return check || allowfield?.includes("all") ? (children) : alert('Not authorized')
     } else {
-
-        alert('Not authorized');
-        return null; // Return null after showing alert to avoid rendering unauthorized content
+        return null
     }
-
-
 }
 
 export default RouteAccessCheck

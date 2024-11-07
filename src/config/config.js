@@ -1,3 +1,3 @@
-const Backend_Url = window.SERVER_PORT.URL || `http://localhost:3000`;
+const Backend_Url = window.SERVER_PORT.URL 
 
 export default Backend_Url;

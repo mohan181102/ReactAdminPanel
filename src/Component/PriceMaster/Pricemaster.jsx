@@ -32,7 +32,9 @@ const Pricemaster = () => {
                     </div>
                 </div>
             </div>
-            <AddPricemaster toggle={showform} settoggle={() => setshowform(!showform)} />
+         
+                <AddPricemaster toggle={showform} settoggle={() => setshowform(!showform)} />
+        
 
         </div>
     )

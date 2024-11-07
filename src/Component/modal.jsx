@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Modal.css";
 // import ImageUpload from './Imageupload';
 
-const Modal = ({sliderId, show, onClose, onSubmit, imageName, setNewName }) => {
+const Modal = ({ sliderId, show, onClose, onSubmit, imageName, setNewName }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   if (!show) {
     return null;
@@ -12,14 +12,15 @@ const Modal = ({sliderId, show, onClose, onSubmit, imageName, setNewName }) => {
   };
 
   const handleSubmit = () => {
+    debugger
     const formData = new FormData();
     formData.append("newName", imageName);
-    if (selectedFile) {
+    if (selectedFile != null) {
       formData.append("Image", selectedFile);
     }
+    onSubmit(selectedFile, imageName, sliderId);
     // console.log(formData)
     // console.log(sliderId)
-    onSubmit(formData,sliderId);
     // onClose();
   };
 

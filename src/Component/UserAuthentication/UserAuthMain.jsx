@@ -26,7 +26,9 @@ const UserAuthMain = () => {
         "HP Content Master",
         "Video Master",
         "Event",
-
+        "JsonObject",
+        "Career",
+        "Employee"
     ])
     const { AllowField, setAllowField } = useContext(UpdateContex)
 

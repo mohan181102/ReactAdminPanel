@@ -10,17 +10,20 @@ function Maingallery() {
   const [groupedAlbums, setGroupedAlbums] = useState({});
   const [showModal, setShowModal] = useState(false);
   const [checkedGalleries, setCheckedGalleries] = useState({});
+  const [currentGalleryId, setCurrentGalleryId] = useState(null);
   const [newName, setNewName] = useState("");
   const [isAllChecked, setIsAllChecked] = useState(false);
-  const cookies = useCookies(['token'])
+  const [cookies, setcookie, removeCookie] = useCookies(['token'])
   const [oldName, setoldName] = useState(); //used for updating the Maingallery name
 
   console.log("isAllChecked", isAllChecked);
 
   const handleUpdateClick = (albumname) => {
+    debugger
     console.log("the album name is:", albumname);
-    setNewName(albumname);
-    setoldName(albumname);
+    setNewName(albumname[0].Name);
+    setoldName(albumname[0].Name);
+    setCurrentGalleryId(albumname[0].Id);
     setShowModal(true);
   };
 
@@ -28,14 +31,15 @@ function Maingallery() {
     fetchData();
   }, []);
 
+
   const fetchData = async () => {
 
     try {
-      const token = cookies[0].token
+
       const response = await fetch(`${Backend_Url}/gallery/images/all`,
         {
           headers: {
-            'Authorization': `Bearer ${token}`
+            'authorization': `Bearer ${cookies.token}`
           }
         }
       );
@@ -82,6 +86,7 @@ function Maingallery() {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
+          'authorization': `Bearer ${cookies.token}`
         },
         body: JSON.stringify({ items: selectedGalleries }),
       });
@@ -109,6 +114,9 @@ function Maingallery() {
         `${Backend_Url}/gallery/${galleryname}`,
         {
           method: "DELETE",
+          headers: {
+            'authorization': 'Bearer ' + cookies.token
+          }
         }
       );
       if (!response) {
@@ -123,6 +131,7 @@ function Maingallery() {
   };
 
   const handleDelete = async (id) => {
+    debugger
     const confirmed = window.confirm(
       "Are you sure you want to delete this image?"
     );
@@ -133,6 +142,9 @@ function Maingallery() {
     try {
       const response = await fetch(`${Backend_Url}/gallery/image/${id}`, {
         method: "DELETE",
+        headers: {
+          'authorization': 'Bearer ' + cookies.token
+        }
       });
       if (!response.ok) {
         throw new Error("Failed to delete image");
@@ -149,7 +161,13 @@ function Maingallery() {
     }
   };
 
-  const handleUpdateName = async (formData) => {
+  const handleUpdateName = async (selectedFile, imageName, sliderId) => {
+    debugger
+    const formData = new FormData();
+    formData.append("newName", imageName);
+    if (selectedFile != null) {
+      formData.append("Image", selectedFile);
+    }
     console.log("oldname", oldName);
     formData.append("oldName", oldName);
     console.log("form data is", formData);
@@ -159,8 +177,9 @@ function Maingallery() {
         formData,
         {
           headers: {
-            "Content-Type": "multipart/form-data", // Set content type as multipart/form-data
-          },
+            'Content-Type': 'multipart/form-data',
+            'authorization': 'Bearer ' + cookies.token
+          }
         }
       );
 
@@ -252,7 +271,7 @@ function Maingallery() {
           <div className="buttons">
             <button
               className="update-button"
-              onClick={() => handleUpdateClick(albumName)}
+              onClick={() => handleUpdateClick(groupedAlbums[albumName])}
             >
               <Icon icon="fluent:clipboard-text-edit-32-filled" />
             </button>
@@ -310,6 +329,7 @@ function Maingallery() {
 
         <Modal
           show={showModal}
+          sliderId={currentGalleryId}
           onClose={() => setShowModal(false)}
           onSubmit={handleUpdateName}
           imageName={newName}

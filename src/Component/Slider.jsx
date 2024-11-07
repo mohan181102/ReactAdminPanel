@@ -67,8 +67,13 @@ const Slider = () => {
   };
 
   //update api call
-  const handleUpdate = async (formData, sliderId) => {
+  const handleUpdate = async (selectedFile, imageName, sliderId) => {
     try {
+      debugger
+
+      const formdata = new FormData();
+      formdata.append("newName", imageName)
+      formdata.append("Image", selectedFile)
       const response = fetch(
         `${Backend_Url}/api/sliders/${sliderId}/images`,
         {
@@ -76,7 +81,7 @@ const Slider = () => {
           headers: {
             'authorization': 'Bearer ' + cookie.token
           },
-          body: formData,
+          body: formdata,
         }
       );
       if (!response) {

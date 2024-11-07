@@ -7,6 +7,7 @@ import { jwtDecode } from "jwt-decode";
 
 import axios from "axios";
 import Backend_Url from "../config/config";
+import Swal from "sweetalert2";
 
 
 const Sidebar = () => {
@@ -53,13 +54,13 @@ const Sidebar = () => {
     },
     {
       name: "Course Master",
-      icon: "solar:square-academic-cap-2-bold",
+      icon: "fluent:book-24-filled",
       navigate: "/coursemaster",
       disable: !Field.includes("Course Master")
     },
     {
       name: "Footer",
-      icon: "mdi:page-layout-footer",
+      icon: "fluent:phone-footer-arrow-down-20-filled",
       navigate: "/footer",
       disable: !Field.includes("Footer")
     },
@@ -68,6 +69,24 @@ const Sidebar = () => {
       icon: "simple-icons:iconify",
       navigate: "/fontawesome",
       disable: !Field.includes("FontAwesome")
+    },
+    {
+      name: "JsonObject",
+      icon: "material-symbols-light:file-json-rounded",
+      navigate: "/jsonobject",
+      disable: !Field.includes("JsonObject")
+    },
+    {
+      name: "Employee",
+      icon: "clarity:employee-solid",
+      navigate: "/employee",
+      disable: !Field.includes("Employee")
+    },
+    {
+      name: "Career",
+      icon: "tabler:brightness-up-filled",
+      navigate: "/career",
+      disable: !Field.includes("Career")
     },
     {
       name: "Gallery",
@@ -198,6 +217,70 @@ const Sidebar = () => {
   }
 
 
+  // -----------------------sync database -----------------------
+  const synchandler = async (e) => {
+    try {
+      // const confirm = window.confirm('While process any intereption will cost lost all data')
+      // if (!confirm) {
+      //   return null
+      // }
+
+      Swal.fire({
+        title: 'Warning!',
+        text: 'While process any intereption will cost lost all data?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, go ahead!',
+        cancelButtonText: 'No, cancel!',
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: 'Processing...',
+            text: 'Please wait while we process your request.',
+            showConfirmButton: false,  // Hide the confirm button
+            allowOutsideClick: false,  // Disable clicking outside the Swal to close it
+            didOpen: () => {
+              // You can simulate a process with a delay here, or make an AJAX call
+              // Simulating a 2-second process
+            }
+          });
+
+          debugger
+          await axios.post(`${Backend_Url}/sync/v1/sync-models`, {}, {
+            headers: {
+              'authorization': 'Bearer ' + cookie.token
+            }
+          }).then((res) => {
+            console.log(res)
+
+            if (res.status == 200) {
+              Swal.fire({
+                title: 'Done!',
+                text: 'Your request has been processed successfully.',
+                icon: 'success',
+              });
+            }
+            alert('Model sync successfully!')
+          })
+        } else {
+          Swal.fire(
+            'Cancelled',
+            'Your action has been cancelled.',
+            'error'
+          )
+
+          return
+        }
+      });
+
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <>
 
@@ -271,6 +354,12 @@ const Sidebar = () => {
                 )
               })
             }
+            <li className={`border px-[10px] py-[5px]    hover:bg-[#eee] flex items-center justify-start border-[#eee] w-full`}>
+              <button onClick={synchandler} className={`flex items-center font-[700] text-[#23527c] justify-center gap-1 `}>
+                <Icon icon="hugeicons:connect" style={{ color: "black" }} />
+                Sync Database
+              </button>
+            </li>
           </ul>
         </div>
       </div>

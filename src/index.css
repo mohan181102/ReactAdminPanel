@@ -67,7 +67,7 @@ code {
 
 /* className={`!h-[40px] !w-[200px]`} */
 .form-input-update {
-  height: 40px !important;
+  height: auto;
   width: 200px;
 }
 

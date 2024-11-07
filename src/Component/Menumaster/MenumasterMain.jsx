@@ -23,9 +23,9 @@ const MenumasterMain = () => {
     } = useContext(UpdateContex)
 
 
-    useEffect(() => fetdata, [])
 
     const fetdata = async () => {
+        debugger
         try {
             await fetch(`${Backend_Url}/MenuMaster/getall`,
                 {
@@ -42,6 +42,7 @@ const MenumasterMain = () => {
         }
     }
 
+    useEffect(() => { fetdata() }, [])
 
     const addMore = async (name) => {
         settoggle(!toggle)
@@ -87,7 +88,7 @@ const MenumasterMain = () => {
             .catch(() => window.alert("Failed to delete the menu"));
     }
 
-
+    //alldata != null && alldata.filter((item) => item.GruopName == "null").map((item, index) => {
     const EveryRow = () => {
         return alldata != null && alldata.filter((item) => item.GruopName == "null").map((item, index) => {
             return item.GruopName == "null" ?

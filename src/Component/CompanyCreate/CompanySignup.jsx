@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import BackendUrl from '../../config/URL.json'
+import Backend_Url from '../../config/config'
 import Swal from 'sweetalert2'
 
 
@@ -41,7 +41,7 @@ const CompanySignup = () => {
                 "DbName": CompanyName
             };
 
-            const response = await axios.post(`${BackendUrl.Backend_Url}/ClientDetails/create`, data);
+            const response = await axios.post(`${Backend_Url}/ClientDetails/create`, data);
             const companyData = response.data.data;
 
             await Swal.fire({

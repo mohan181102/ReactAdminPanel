@@ -126,9 +126,9 @@ function FooterMain() {
 
                         {/* content */}
                         <td className={`flex items-center justify-center p-0 border border-[#ccc]`}>
-                            {showparaid == Singleitem.Id ? <div onClick={() => setshowparaid("")} className={`bg-white cursor-pointer min-w-full max-w-[130px] p-[2px] h-auto overflow-x-scroll`} dangerouslySetInnerHTML={{ __html: Singleitem.TextContent }}>
+                            {showparaid == Singleitem.Id ? <div onClick={() => setshowparaid("")} className={`bg-white min-h-[40px] cursor-pointer min-w-full max-w-[130px] p-[2px] overflow-x-scroll`} dangerouslySetInnerHTML={{ __html: Singleitem.TextContent }}>
 
-                            </div> : <p className={`cursor-pointer`} onClick={() => setshowparaid(Singleitem.Id)}>View content</p>}
+                            </div> : <p className={`cursor-pointer min-h-[40px] flex items-center justify-center text-red-500`} onClick={() => setshowparaid(Singleitem.Id)}>View content</p>}
 
                         </td>
 

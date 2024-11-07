@@ -9,6 +9,11 @@ const UpdateProvider = function ({ children }) {
     const [UpdateURL, setUpdateURL] = useState(null)
 
 
+    // ---------------------create json object------------------------------------
+    const [jsonupdateID, setjsonupdateID] = useState(null)
+    const [jsonupdateContent, setjsonupdateContent] = useState(null)
+
+
     // CREATE UPDATE STATE FOR UPDATE TESTIMONIALS
     const [UpdateTName, SetTname] = useState(null)
     const [UpdateTDetails, SetUpdateTDetails] = useState(null)
@@ -176,6 +181,7 @@ const UpdateProvider = function ({ children }) {
     const [UpdateHTTextarea, setUpdateHTTextArea] = useState(null)
     const [UpdateHTId, setUpdateHTId] = useState(null)
 
+    const [UpdateJsonName, setUpdateJsonName] = useState(null);
 
     // USER
     const [AllowField, setAllowField] = useState([])
@@ -188,8 +194,10 @@ const UpdateProvider = function ({ children }) {
 
         <UpdateContex.Provider value={{
             MobileToggle, setMobileToggle,
-
+            jsonupdateID, setjsonupdateID,
             AllowField, setAllowField,
+            jsonupdateContent, setjsonupdateContent,
+            UpdateJsonName, setUpdateJsonName,
 
             UpdateHTTitle, setUpdateHTTitle,
             UpdateHTPriority, setUpdateHTPRiority,

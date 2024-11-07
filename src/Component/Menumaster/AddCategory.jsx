@@ -41,10 +41,10 @@ const AddCategory = ({ toggle, settoggle, formtitle, page = false, GruopName = n
             name: "url",
             placeholder: "url",
             type: "text",
-            defaultValue: UpdateMMURL != null ? UpdateMMURL : null
+            defaultValue: UpdateMMId != null ? UpdateMMURL : null
         },
         {
-            name: "Image",
+            name: "Image/File",
             placeholder: "Image",
             type: "file",
             defaultValue: UpdateMMImage != null ? UpdateMMImage : null
@@ -74,7 +74,7 @@ const AddCategory = ({ toggle, settoggle, formtitle, page = false, GruopName = n
             defaultValue: UpdateMMImage != null ? UpdateMMImage : null
         }
     ]
-
+    
     if (toggle) {
         return null;
     }
@@ -167,87 +167,97 @@ const AddCategory = ({ toggle, settoggle, formtitle, page = false, GruopName = n
 
 
     return (
-        <div className={`main-add ${settoggle == false ? "close-main-add" : ""} flex-col z-[50000] overflow-scroll gap-[30px] fixed w-screen overscroll-auto py-[30px] h-screen top-0 left-0 flex items-center justify-start pt-[40px]`}>
-            <div className={`w-[90%] rounded-md flex items-center justify-between px-[30px] py-[20px] bg-white`}>
-                <h1 className={`w-auto h-auto px-[10px] py-[5px] rounded-md text-xl font-bold bg-[#bbbbbb] text-white flex items-center justify-center`}>{formtitle ? formtitle : "Add Category"}</h1>
-                <button className={`w-auto h-auto p-[5px] bg-red-500 rounded-md text-white text-xl font-bold`} onClick={() => settoggle()}>
+        <div className={`main-add ${settoggle ? "" : "close-main-add"} flex-col z-50 overflow-auto gap-8 fixed w-full h-full top-0 left-0 py-8 flex items-start justify-center`}>
+            <div className="w-11/12 max-w-2xl absolute top-[10px] bg-white rounded-lg shadow-lg flex items-center justify-between px-8 py-4">
+                <h1 className="text-xl font-bold bg-gray-600 text-white px-4 py-2 rounded-md">{formtitle || "Add Category"}</h1>
+                <button className="p-2 bg-red-500 rounded-md text-white text-xl" onClick={() => settoggle()}>
                     <Icon icon="raphael:cross" />
                 </button>
             </div>
-            <form onSubmit={(e) => handlesubmit(e)} className={`w-[90%]   rounded-md min-h-[50vh] max-h-max flex flex-wrap items-start justify-center gap-[30px] px-[30px] py-[20px] bg-white `}>
-
-
-                {
-                    field.map((item) => {
-                        return (
-                            <>
-
-                                {item.type == "text" ? <div className={`min-w-[150px] h-[60px] rounded-md overflow-hidden bg-[#bbbbbb] px-[10px] py-[5px] flex items-center justify-center flex-col `}>
-                                    <label className={`w-full h-[40%] py-[10px] flex items-center justify-start text-[15px] font-[400]`}>{item.name}</label>
-                                    <input defaultValue={item.name == "url" ? "/page" : UpdateMMId != null ? item.defaultValue : null} onChange={(e) => item.name == "Category/Sub name" ? UpdateMMId != null ? setUpdateMMCategory_sub(e.target.value) : setCategory(e.target.value) : item.name == "url" ? UpdateMMId != null ? setUpdateMMURL(e.target.value) : seturl(e.target.value) : null} className={`input-addcotegory !w-full h-[55%] py-[10px]  text-[15px] font-[400]`} type={item.type} placeholder={item.placeholder} />
-                                </div> : ""}
-                                {
-                                    item.type == "number" ? <div className={`min-w-[100px] h-[60px] rounded-md overflow-hidden bg-[#bbbbbb] px-[10px] py-[5px] flex items-center justify-center flex-col `}>
-                                        <label className={`w-full h-[40%] py-[10px] flex items-center justify-start text-[15px] font-[400]`}>{item.name}</label>
-                                        <input defaultValue={UpdateMMId != null ? item.defaultValue : null} onChange={(e) => UpdateMMId != null ? setUpdateMMPriority(e.target.value) : setPriority(e.target.value)} className={`input-addcotegory !w-full h-[55%] py-[10px]  text-[15px] font-[400]`} type={item.type} placeholder={item.placeholder} />
-                                    </div> : ""
-                                }
-                                {
-                                    item.type == "file" ? <div className={`min-w-[100px] min-h-[60px] rounded-md overflow-hidden bg-[#bbbbbb] px-[10px] py-[5px] flex items-center justify-center flex-col `}>
-                                        <label className={`w-full h-[40%] py-[5px] flex items-center justify-start text-[15px] font-[400]`}>{item.name}</label>
-                                        <input onChange={(e) => { setImagePreviewFuction(e) }} className={`input-addcotegory w-full bg-white h-[55%] flex items-center justify-center  text-[15px] font-[400]`} type={item.type} placeholder={UpdateMMId != null ? item.placeholder : null} />
-                                    </div> : ""
-                                }
-                                {
-                                    item.type == "boolean" && <div className={`min-w-[100px] h-[60px] rounded-md overflow-hidden bg-[#bbbbbb] px-[10px] py-[5px] flex items-center justify-center flex-col `}>
-                                        <label className={`w-full h-[40%] py-[10px] flex items-center justify-start text-[15px] font-[400]`}>{item.name}</label>
-                                        <select onChange={(e) => e.target.value == "True" ? UpdateMMId != null ? setUpdateMMStatus(true) : setStatus(true) : UpdateMMId != null ? setUpdateMMStatus(false) : setStatus(false)}>
-                                            <option>{UpdateMMId != null ? UpdateMMStatus ? "True" : "False" : "--select--"}</option>
-                                            <option>True</option>
-                                            <option>False</option>
-                                        </select>
-                                    </div>
-                                }
-                                {
-                                    item.type == "textarea" && <div className={`w-[40%] min-h-[150px] rounded-md overflow-y-auto bg-[#bbbbbb] px-[10px] py-[5px] flex items-center justify-center flex-col `}>
-                                        <label className={`w-full h-[40%] py-[10px] flex items-center justify-start text-[15px] font-[400]`}>{item.name}</label>
-                                        <JoditEditor
-                                            ref={editor}
-                                            value={UpdateMMId != null ? UpdateMMTextArea : content}
-
-                                            tabIndex={1}
-                                            onBlur={(newContent) => UpdateMMId != null ? setUpdateTextArea(content) : setContent(newContent)}
-                                            className={`w-full`}
-                                        />
-                                    </div>
-
-                                }
-                                {
-                                    item.type == "preview" && <div className={`w-[40%] min-h-[150px] rounded-md overflow-hidden bg-[#bbbbbb] px-[10px] py-[5px] flex items-center justify-start flex-col `}>
-                                        <label className={`w-full h-[40%] py-[10px] flex items-center justify-start text-[15px] font-[400]`}>{item.name}</label>
-                                        <img className={`w-[100%] max-h-[200px] overflow-hidden bg-white`} src={UpdateMMId != null ? UpdateMMImage : ImagePreview} alt="--Preview--" />
-                                    </div>
-                                }
-
-                            </>
-                        )
-                    })
-
-                }
-
-
-                <div className={`w-auto h-auto flex flex-col items-center right-[20px] bottom-[20px] justify-center gap-[20px]`}>
-                    <button type={UpdateMMId == null ? "submit" : "button"} onClick={() => UpdateMMId != null ? updateHandler() : null} className={`w-auto h-auto px-[20px] py-[10px] bg-green-500 bottom-[20px] right-[20px] rounded-md text-white `}>
+            <form onSubmit={(e) => handlesubmit(e)} className="w-11/12 max-w-2xl absolute top-[120px] bg-white rounded-lg shadow-lg p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+                {field.map((item, index) => (
+                    <div key={index} className="p-4 bg-gray-100 rounded-lg shadow-md flex flex-col">
+                        <label className="text-sm font-medium text-gray-700 mb-2">{item.name}</label>
+                        {item.type === "text" && (
+                            <input
+                                defaultValue={item.name === "url" && UpdateMMId == null ? "/page" : UpdateMMId != null ? item.defaultValue : ""}
+                                onChange={(e) => {
+                                    if (item.name === "Category/Sub name") {
+                                        UpdateMMId != null ? setUpdateMMCategory_sub(e.target.value) : setCategory(e.target.value);
+                                    } else if (item.name === "url") {
+                                        UpdateMMId != null ? setUpdateMMURL(e.target.value) : seturl(e.target.value);
+                                    }
+                                }}
+                                className="w-full p-2 border border-gray-300 rounded-md text-gray-700"
+                                type={item.type}
+                                placeholder={item.placeholder}
+                            />
+                        )}
+                        {item.type === "number" && (
+                            <input
+                                defaultValue={UpdateMMId != null ? item.defaultValue : ""}
+                                onChange={(e) => UpdateMMId != null ? setUpdateMMPriority(e.target.value) : setPriority(e.target.value)}
+                                className="w-full p-2 border border-gray-300 rounded-md text-gray-700"
+                                type={item.type}
+                                placeholder={item.placeholder}
+                            />
+                        )}
+                        {item.type === "file" && (
+                            <input
+                                onChange={(e) => setImagePreviewFuction(e)}
+                                className="w-full p-2 border border-gray-300 rounded-md text-gray-700"
+                                type={item.type}
+                                placeholder={UpdateMMId != null ? item.placeholder : ""}
+                            />
+                        )}
+                        {item.type === "boolean" && (
+                            <select
+                                onChange={(e) => e.target.value === "True" ? UpdateMMId != null ? setUpdateMMStatus(true) : setStatus(true) : UpdateMMId != null ? setUpdateMMStatus(false) : setStatus(false)}
+                                className="w-full p-2 border border-gray-300 rounded-md text-gray-700"
+                            >
+                                <option>{UpdateMMId != null ? UpdateMMStatus ? "True" : "False" : "--select--"}</option>
+                                <option>True</option>
+                                <option>False</option>
+                            </select>
+                        )}
+                        {item.type === "textarea" && (
+                            <JoditEditor
+                                ref={editor}
+                                value={UpdateMMId != null ? UpdateMMTextArea : content}
+                                tabIndex={1}
+                                onBlur={(newContent) => UpdateMMId != null ? setUpdateTextArea(content) : setContent(newContent)}
+                                className="w-full h-32 border border-gray-300 rounded-md"
+                            />
+                        )}
+                        {item.type === "preview" && (
+                            <img
+                                className="w-full h-32 object-cover border border-gray-300 rounded-md"
+                                src={UpdateMMId != null ? UpdateMMImage : ImagePreview}
+                                alt="Preview"
+                            />
+                        )}
+                    </div>
+                ))}
+                <div className="col-span-full flex flex-col items-center gap-4 mt-6">
+                    <button
+                        type={UpdateMMId == null ? "submit" : "button"}
+                        onClick={() => UpdateMMId != null ? updateHandler() : null}
+                        className="px-6 py-2 bg-green-500 rounded-md text-white text-lg"
+                    >
                         {UpdateMMId != null ? "UPDATE" : "CREATE"}
                     </button>
-                    {
-                        UpdateMMId != null ?
-                            <button onClick={(e) => clearHandler(e)} className={`w-auto h-auto  px-[20px] py-[10px] bg-gray-500   rounded-md text-white `}>CLEAR</button> : null
-                    }
+                    {UpdateMMId != null && (
+                        <button
+                            onClick={(e) => clearHandler(e)}
+                            className="px-6 py-2 bg-gray-500 rounded-md text-white text-lg"
+                        >
+                            CLEAR
+                        </button>
+                    )}
                 </div>
-
             </form>
         </div>
+
     )
 }
 

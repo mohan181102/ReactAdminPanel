@@ -5,6 +5,7 @@ import { Icon } from '@iconify/react/dist/iconify.js'
 import AddPricemaster from './AddPricemaster'
 import UpdateContex from '../CreateContex/CreateContex'
 import { useCookies } from 'react-cookie'
+import axios from 'axios'
 
 const PriceMasterMain = () => {
     const [alldata, setalldata] = useState([])
@@ -29,15 +30,15 @@ const PriceMasterMain = () => {
 
     const fetchdata = async (req, res) => {
         try {
-            await fetch(`${Backend_Url}/pricemaster/getAll`,
+            debugger
+            await axios.get(`${Backend_Url}/pricemaster/getAll`,
                 {
                     headers: {
                         'authorization': 'Bearer ' + cookie.token
                     }
                 }
             )
-                .then((res) => res.json())
-                .then((res) => setalldata(res.data))
+                .then((res) => setalldata(res.data.data))
         } catch (error) {
             console.log(error)
         }

@@ -1,8 +1,12 @@
 .main-add {
     background-color: rgba(0, 0, 0, 0.438);
-    animation-name: addcategoryY;
+    /* animation-name: addcategoryY; */
     animation-iteration-count: 1;
     animation-duration: 300ms;
+    z-index: 2002;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .close-main-add {

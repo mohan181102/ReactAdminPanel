@@ -11,9 +11,10 @@ const HPBodyCardMain = () => {
     const { setCardTitle, setUpdateCardHeading, UpdateCardImage, setUpdateCardImage, setUpdateCardStatus, setUpdateCardPriority, setCardId, setCardURL, setUpdateCardWidth, setUpdateCardDetails } = useContext(UpdateContex)
     const [cookie, setcookie, removeCookie] = useCookies(['token'])
 
-    useEffect(() => fetchdata, [])
+    useEffect(() => { fetchdata() }, [])
 
     const fetchdata = async () => {
+        debugger
         await fetch(`${Backend_Url}/HPBodyCard/getall`, {
             headers: {
                 'authorization': 'Bearer ' + cookie.token
