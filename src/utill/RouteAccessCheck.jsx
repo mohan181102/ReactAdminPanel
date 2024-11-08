@@ -102,6 +102,22 @@ const RouteAccessCheck = ({ children }) => {
         {
             name: "Career",
             route: "/career"
+        },
+        {
+            name: "Advertisment Master",
+            route: "/advertismentmaster"
+        },
+        {
+            name: "Product Category Master",
+            route: "/product-category-master"
+        },
+        {
+            name: "Product Master",
+            route: "/productMaster"
+        },
+        {
+            name: "News & Notice",
+            route: "/newsnotice"
         }
 
     ]

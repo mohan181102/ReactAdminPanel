@@ -158,13 +158,13 @@ const Sidebar = () => {
       name: "HP BodyCard",
       icon: "fa6-solid:id-card",
       navigate: "/homepageBodycard",
-      disable: !Field.includes("HP BodyCard") || !Field.includes("all")
+      disable: !Field.includes("HP BodyCard")
     },
     {
       name: "HP Content Master",
       icon: "ic:twotone-message",
       navigate: "/homepage/contentmaster",
-      disable: !Field.includes("HP Content Master") || !Field.includes("all")
+      disable: !Field.includes("HP Content Master")
     },
     {
       name: "Product Category Master",
@@ -176,7 +176,7 @@ const Sidebar = () => {
       name: "Video Master",
       icon: "fluent:video-16-filled",
       navigate: "/videoMaster",
-      disable: !Field.includes("Video Master") || !Field.includes("all")
+      disable: !Field.includes("Video Master")
     },
     {
       name: "Product Master",
@@ -188,17 +188,19 @@ const Sidebar = () => {
       name: "Event",
       icon: "ic:round-event",
       navigate: "/Event",
-      disable: !Field.includes("Event") || !Field.includes("all")
+      disable: !Field.includes("Event")
     },
     {
       name: "News & Notice",
       icon: "ooui:help-notice-ltr",
       navigate: "/newsnotice",
-      disable: !Field.includes("News & Notice") || !Field.includes("all")
+      disable: !Field.includes("News & Notice")
     }
 
   ]
-
+  useEffect(() => {
+    console.log(Field)
+  }, [Field]);
   // fetch field
   const field = async () => {
 
@@ -216,7 +218,17 @@ const Sidebar = () => {
     }
   }
 
-
+  // Swal.fire({
+  //   title: 'Processing...',
+  //   html: '<div class="abovespinner"><div class="spinner"></div><p>Please wait while we process your request.</p></div>',
+  //   // text: 'Please wait while we process your request.',
+  //   showConfirmButton: false,  // Hide the confirm button
+  //   allowOutsideClick: false,  // Disable clicking outside the Swal to close it
+  //   didOpen: () => {
+  //     // You can simulate a process with a delay here, or make an AJAX call
+  //     // Simulating a 2-second process
+  //   }
+  // });
   // -----------------------sync database -----------------------
   const synchandler = async (e) => {
     try {
@@ -238,7 +250,8 @@ const Sidebar = () => {
         if (result.isConfirmed) {
           Swal.fire({
             title: 'Processing...',
-            text: 'Please wait while we process your request.',
+            html: '<div class="abovespinner"><div class="spinner"></div><p>Please wait while we process your request.</p></div>',
+            // text: 'Please wait while we process your request.',
             showConfirmButton: false,  // Hide the confirm button
             allowOutsideClick: false,  // Disable clicking outside the Swal to close it
             didOpen: () => {
@@ -262,7 +275,7 @@ const Sidebar = () => {
                 icon: 'success',
               });
             }
-            alert('Model sync successfully!')
+            // alert('Model sync successfully!')
           })
         } else {
           Swal.fire(
@@ -274,6 +287,41 @@ const Sidebar = () => {
           return
         }
       });
+
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
+  // -----------------------dbdownload----------------------------
+  const dbdownload = async (e) => {
+    try {
+
+      debugger
+      await axios.get(`${Backend_Url}/dbbackup/db-download`, {
+        headers: {
+          'authorization': 'Bearer ' + cookie.token
+        },
+        responseType: 'blob'
+      }).then((res) => {
+        Swal.fire({
+          title: 'Done!',
+          text: 'Database download successfully successfully.',
+          icon: 'success',
+        });
+        console.log(res)
+        const url = window.URL.createObjectURL(new Blob([res.data]))
+        const link = document.createElement('a')
+        link.href = url
+        link.setAttribute('download', 'Database.sqlite')
+        document.body.appendChild(link)
+        link.click()
+        link.remove()
+
+
+      })
 
 
     } catch (error) {
@@ -356,10 +404,17 @@ const Sidebar = () => {
             }
             <li className={`border px-[10px] py-[5px]    hover:bg-[#eee] flex items-center justify-start border-[#eee] w-full`}>
               <button onClick={synchandler} className={`flex items-center font-[700] text-[#23527c] justify-center gap-1 `}>
-                <Icon icon="hugeicons:connect" style={{ color: "black" }} />
+                <Icon icon="hugeicons:connect" style={{ color: "#23527c" }} />
                 Sync Database
               </button>
             </li>
+
+            {/* <li className={`border px-[10px] py-[5px]    hover:bg-[#eee] flex items-center justify-start border-[#eee] w-full`}>
+              <button onClick={dbdownload} className={`flex items-center font-[700] text-[#23527c] justify-center gap-1 `}>
+                <Icon icon="material-symbols:download" style={{ color: "#23527c" }} />
+                Download DbBackup
+              </button>
+            </li> */}
           </ul>
         </div>
       </div>

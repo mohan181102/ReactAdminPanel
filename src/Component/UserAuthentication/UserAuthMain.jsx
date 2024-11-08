@@ -28,7 +28,11 @@ const UserAuthMain = () => {
         "Event",
         "JsonObject",
         "Career",
-        "Employee"
+        "Employee",
+        "Advertisment Master",
+        "Product Category Master",
+        "Product Master",
+        "News & Notice"
     ])
     const { AllowField, setAllowField } = useContext(UpdateContex)
 
