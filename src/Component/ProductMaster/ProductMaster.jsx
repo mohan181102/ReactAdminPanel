@@ -241,9 +241,9 @@ const ProductMaster = () => {
 
     return (
         <div className="App">
-            <div className="sidebar fixed pb-[50px]">
+            {/* <div className="sidebar fixed pb-[50px]">
                 <Sidebar />
-            </div>
+            </div> */}
             <div className="body-content absolute w-[77%] right-0">
                 <div className="heading">
                     <h1 className="General-Setting-Head">Product Master</h1>

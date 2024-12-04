@@ -102,7 +102,7 @@ const CourseMasterForm = ({ fetchdata }) => {
         <div className="container">
             <form className="upload-form !bg-white form-update" onSubmit={(e) => handlesubmit(e)} >
                 <div className={` allinput-update flex-col`}>
-                    <div className={`w-full h-auto mb-[10px] flex items-center justify-start`}>
+                    <div className={`w-full sm:flex-col sm:items-start h-auto mb-[10px] flex items-center justify-start`}>
                         <div className="   form-gruop-update">
                             <label htmlFor="name" className='form-label-update'> Title</label>
                             <input

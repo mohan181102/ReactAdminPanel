@@ -38,6 +38,7 @@ const AdvertisementMaster = () => {
     // };
 
     const handleEditClick = (category) => {
+        debugger
         setInputValues({
             id: category.Id,
             Category: category.Category,
@@ -54,6 +55,11 @@ const AdvertisementMaster = () => {
         setIsModalOpenCategory(true);
         fetchData();
     };
+
+    useEffect(() => {
+        console.log(inputValues)
+        console.log('Image', Image)
+    }, [inputValues, Image]);
 
     console.log(inputValues);
     console.log(Image);
@@ -135,9 +141,9 @@ const AdvertisementMaster = () => {
 
     return (
         <div className="App">
-            <div className="sidebar fixed pb-[50px]">
+            {/* <div className="sidebar fixed pb-[50px]">
                 <Sidebar />
-            </div>
+            </div> */}
             <div className="body-content absolute w-[77%] right-0">
                 <div className="heading">
                     <h1 className="General-Setting-Head">Advertisement Master</h1>
@@ -151,10 +157,10 @@ const AdvertisementMaster = () => {
                     <div className="heading">
                         <h1 className="General-Setting-Head">Advertisement List</h1>
                     </div>
-                    <div className="">
+                    <div className="sm:overflow-scroll">
                         <table>
                             <thead>
-                                <tr>
+                                <tr className={`sm:overflow-scroll`}>
                                     <th>Action</th>
                                     <th>SNo.</th>
                                     <th>Image</th>

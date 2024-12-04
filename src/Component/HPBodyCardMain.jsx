@@ -25,7 +25,7 @@ const HPBodyCardMain = () => {
             .catch((err) => window.alert("Can't fetch all body", err))
     }
 
-    // console.log(allBodyCard)
+    console.log(allBodyCard)
 
     const changecheck = (e, id) => {
         if (e.target.checked) {
@@ -120,7 +120,10 @@ const HPBodyCardMain = () => {
 
                 {/* details */}
                 <td className={`border border-[#ccc]`}>
-                    {Singleitem.Details}
+                    {
+                        shortpara(30, Singleitem.Details)
+                    }
+                    {/* {Singleitem.Details} */}
                 </td>
 
                 <td className={`border !w-[30px] border-[#ccc]`}>
@@ -146,6 +149,14 @@ const HPBodyCardMain = () => {
             </tr>
         ));
     };
+
+    function shortpara(word = 50, full = "") {
+        debugger
+
+        const shortpara = full.slice(0, word)
+        console.log(shortpara)
+        return shortpara + "..."
+    }
 
 
     return (

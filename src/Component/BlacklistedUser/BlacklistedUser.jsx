@@ -3,6 +3,8 @@ import Sidebar from '../Sidebar'
 import Backend_Url from '../../config/config'
 import { useCookies } from 'react-cookie'
 import axios from 'axios'
+import { Icon } from '@iconify/react/dist/iconify.js'
+import Swal from 'sweetalert2'
 
 const BlacklistedUser = () => {
     const [cookie, setcookie, removeCookie] = useCookies(['token'])
@@ -101,6 +103,44 @@ const BlacklistedUser = () => {
         }
     }
 
+    const handledeleteUser = async (id) => {
+        try {
+            debugger
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'You will not be able to undo this action!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, keep it',
+                reverseButtons: true
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    await axios.delete(`${Backend_Url}/User/deleteUser/${id.Username}`, {
+                        headers: {
+                            'authorization': 'Bearer ' + cookie.token,
+                        }
+                    }).then((res) => {
+                        console.log(res.data)
+                        Swal.fire({
+                            title: 'Deleted!',
+                            text: 'The item has been deleted successfully.',
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        });
+                        alluser()
+                    })
+
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    console.log('Delete canceled');
+                }
+            });
+
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     useEffect(() => { alluser() }, [])
     useEffect(() => { getblacklisted() }, [])
@@ -133,6 +173,11 @@ const BlacklistedUser = () => {
                                 <option>Blacklist</option>
                             </select>
                         </td>
+                        <td>
+                            <button onClick={() => handledeleteUser(item)}>
+                                <Icon icon="mingcute:delete-fill" style={{ color: "red" }} />
+                            </button>
+                        </td>
                     </tr>
                 </>
             )
@@ -157,6 +202,7 @@ const BlacklistedUser = () => {
                                 <th>UserName</th>
                                 <th>Status</th>
                                 <th>Action</th>
+                                <th>Delete</th>
                             </thead>
                             <tbody>
                                 {User.length != 0 && PerUser()}

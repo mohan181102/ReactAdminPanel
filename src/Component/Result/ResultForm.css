@@ -2,3 +2,7 @@
     width: auto;
     margin-right: 0px;
 }
+
+select{
+    width: 100% !important;
+}

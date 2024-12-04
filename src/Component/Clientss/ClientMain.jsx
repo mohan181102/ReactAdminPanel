@@ -35,6 +35,14 @@ const ClientMain = () => {
 
     console.log(allcontent)
 
+    function shortpara(word = 50, full = "") {
+        debugger
+
+        const shortpara = full.slice(0, word)
+        console.log(shortpara)
+        return shortpara + "..."
+
+    }
     // deletehandler
     const deletehandler = async function (e, id = null) {
 
@@ -118,7 +126,7 @@ const ClientMain = () => {
 
                 {/* IMAGE */}
                 <td className="Name main-color border border-[#ccc]">
-                    <img className={`w-[100px] h-[30px] shadow-md `} src={Singleitem.Image} alt='image' />
+                    <img className={`w-[100px] h-[30px] shadow-md object-cover bg-center `} src={Singleitem.Image} alt='image' />
                 </td>
 
                 {/* PRIORITY */}
@@ -128,7 +136,7 @@ const ClientMain = () => {
 
                 {/* PRIORITY */}
                 <td className="view-cell !w-[150px] text-left cm-priority border border-[#ccc]">
-                    {Singleitem.Details}
+                    {shortpara(30, Singleitem.Details)}
                 </td>
 
                 {/* status */}

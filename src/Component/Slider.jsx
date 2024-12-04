@@ -6,6 +6,7 @@ import "./Slider.css";
 import Modal from "./modal";
 import Backend_Url from "../config/config";
 import { useCookies } from "react-cookie";
+import { useLocation } from "react-router-dom";
 
 const Slider = () => {
   const [Slider, setSlider] = useState(null);
@@ -74,7 +75,7 @@ const Slider = () => {
       const formdata = new FormData();
       formdata.append("newName", imageName)
       formdata.append("Image", selectedFile)
-      const response = fetch(
+      const response = await fetch(
         `${Backend_Url}/api/sliders/${sliderId}/images`,
         {
           method: "POST",
@@ -83,17 +84,25 @@ const Slider = () => {
           },
           body: formdata,
         }
-      );
-      if (!response) {
-        throw new Error("Unable To Update");
-      }
+      ).then((res) => {
+        if (res.status === 409) {
+          alert('Image already exists')
+          return
+        }
+        setShowModal(false);
+        fetchSlider();
+        console.log(res)
+      });
 
 
-      setShowModal(false);
-      fetchSlider();
-      window.location.reload();
+      // if (!response) {
+      //   // alert('Unable to update slider')
+      //   throw new Error("Unable To Update");
+      // }
+      // window.location.reload();
     } catch (error) {
       console.error(error);
+      alert('unable to update')
     }
   };
 
@@ -152,18 +161,21 @@ const Slider = () => {
   };
 
 
+
+
   return (
     <>
       <div className="App">
-        <div className="sidebar fixed pb-[50px]">
+        {/* <div className="sidebar fixed pb-[50px]">
           <Sidebar />
-        </div>
+        </div> */}
         <div className="body-content absolute w-[77%] right-0">
           <div className="Header">
             <h1 className="heading">Slider</h1>
           </div>
           <div className="Upload Form">
             <ImageUpload
+              fetchSlider={fetchSlider}
               name={"Slider"}
               endpoint={`${Backend_Url}/api/Sliders`}
             />
@@ -176,7 +188,7 @@ const Slider = () => {
                     <th className={`12px font-bold p-[8px]`}>Sno</th>
                     {/* <th>Slider Id</th> */}
                     <th className={`12px font-bold p-[8px]`}>Slider Name</th>
-                    <th className={`12px font-bold p-[8px] flex items-center justify-start`}>Images</th>
+                    <th className={`12px font-bold p-[8px] sm:block sm:border-none sm:h-[40px] flex items-center justify-start`}>Images</th>
                     <th className={`12px font-bold p-[8px]`}>Action</th>
                   </tr>
                 </thead>
@@ -188,23 +200,25 @@ const Slider = () => {
                       {/* <td>{slider.Id}</td> */}
                       <td className={`border border-[#ccc]`}>{slider.SliderName}</td>
                       <td className="image-cell-slider border border-[#ccc]">
-                        {slider.Imagepaths.map((image, imageIndex) => (
-                          <div key={imageIndex} className="image-parent-slider">
-                            <img
-                              className="image-container-slider"
-                              src={image}
-                              alt={imageIndex}
-                              width="200px"
-                              height="50px"
-                            />
-                            <button
-                              className="delete-button"
-                              onClick={() => handleDelete(image, slider.Id)}
-                            >
-                              <Icon icon="material-symbols:delete-outline" />
-                            </button>
-                          </div>
-                        ))}
+                        <div className={`image-cell-div`}>
+                          {slider.Imagepaths.map((image, imageIndex) => (
+                            <div key={imageIndex} className="image-parent-slider">
+                              <img
+                                className="image-container-slider"
+                                src={image}
+                                alt={imageIndex}
+                                width="200px"
+                                height="50px"
+                              />
+                              <button
+                                className="delete-button"
+                                onClick={() => handleDelete(image, slider.Id)}
+                              >
+                                <Icon icon="material-symbols:delete-outline" />
+                              </button>
+                            </div>
+                          ))}
+                        </div>
                       </td>
                       <td className={`border border-[#ccc]`}>
                         <div className="buttons">
@@ -235,6 +249,7 @@ const Slider = () => {
         </div>
         <Modal
           show={showModal}
+          fetchSlider={fetchSlider}
           onClose={() => setShowModal(false)}
           imageName={newName}
           setNewName={setNewName}

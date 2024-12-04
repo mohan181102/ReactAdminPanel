@@ -35,8 +35,14 @@ const Sidebar = () => {
       disable: !Field.includes("General Setting")
     },
     {
+      name: "Walk On",
+      icon: "gg:move-up",
+      navigate: "/walkon",
+      disable: !Field.includes("Walk On")
+    },
+    {
       name: "Flash News",
-      icon: "ant-design:setting-filled",
+      icon: "iconamoon:news-fill",
       navigate: "/flash-news",
       disable: !Field.includes("Flash News")
     },
@@ -119,6 +125,12 @@ const Sidebar = () => {
       disable: !Field.includes("Client")
     },
     {
+      name: "CurrentOpenning",
+      icon: "material-symbols:post-add",
+      navigate: "/currentop",
+      disable: !Field.includes("CurrentOpenning")
+    },
+    {
       name: "Plan and Prices Master",
       icon: "solar:tag-price-bold",
       navigate: "/pricemaster",
@@ -168,7 +180,7 @@ const Sidebar = () => {
     },
     {
       name: "Product Category Master",
-      icon: "ic:twotone-message",
+      icon: "ix:product",
       navigate: "/product-category-master",
       disable: !Field.includes("Product Category Master")
     },
@@ -180,7 +192,7 @@ const Sidebar = () => {
     },
     {
       name: "Product Master",
-      icon: "fluent:video-16-filled",
+      icon: "simple-icons:producthunt",
       navigate: "/productMaster",
       disable: !Field.includes("Product Master")
     },
@@ -296,6 +308,14 @@ const Sidebar = () => {
 
 
   // -----------------------dbdownload----------------------------
+  function getFormattedDate() {
+    const today = new Date();
+    const day = String(today.getDate()).padStart(2, '0'); // Add leading zero if needed
+    const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+    const year = today.getFullYear();
+
+    return `${day}/${month}/${year}`;
+  }
   const dbdownload = async (e) => {
     try {
 
@@ -312,10 +332,12 @@ const Sidebar = () => {
           icon: 'success',
         });
         console.log(res)
+
+        const dbname = `Database[${getFormattedDate()}]`
         const url = window.URL.createObjectURL(new Blob([res.data]))
         const link = document.createElement('a')
         link.href = url
-        link.setAttribute('download', 'Database.sqlite')
+        link.setAttribute('download', `${dbname}.sqlite`)
         document.body.appendChild(link)
         link.click()
         link.remove()
@@ -329,11 +351,16 @@ const Sidebar = () => {
     }
   }
 
+
+
+
   return (
     <>
 
       <div className="sidebar-container bg-[#f8f8f8]">
         {/* BTN FOR RESPONSIVE */}
+
+
 
         {/* <h1 className="text-center">Sidebar Menu</h1> */}
         <div className="">
@@ -368,7 +395,7 @@ const Sidebar = () => {
 
                 return (
                   <>
-                    <li className={`border px-[10px] py-[5px] ${location.pathname == item.navigate ? "bg-[#eee]" : ""} ${item.disable && !Field.includes("all") ? " cursor-not-allowed opacity-50" : ""} cursor-pointer hover:bg-[#eee] flex items-center justify-start border-[#eee] w-full`}>
+                    <li style={{ display: !item.disable || Field.includes("all") ? "block" : "none" }} className={`border px-[10px] py-[5px] ${location.pathname == item.navigate ? "bg-[#eee]" : ""} ${item.disable && !Field.includes("all") ? " cursor-not-allowed opacity-50" : ""} cursor-pointer hover:bg-[#eee] flex items-center justify-start border-[#eee] w-full`}>
                       <NavLink
                         to={item.disable && !Field.includes("all") ? null : item.navigate}
                         style={({ isActive }) => ({
@@ -409,12 +436,12 @@ const Sidebar = () => {
               </button>
             </li>
 
-            {/* <li className={`border px-[10px] py-[5px]    hover:bg-[#eee] flex items-center justify-start border-[#eee] w-full`}>
+            <li className={`border px-[10px] py-[5px]    hover:bg-[#eee] flex items-center justify-start border-[#eee] w-full`}>
               <button onClick={dbdownload} className={`flex items-center font-[700] text-[#23527c] justify-center gap-1 `}>
                 <Icon icon="material-symbols:download" style={{ color: "#23527c" }} />
                 Download DbBackup
               </button>
-            </li> */}
+            </li>
           </ul>
         </div>
       </div>

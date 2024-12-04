@@ -41,4 +41,120 @@ html,
   padding: "20px";
 }
 
+.buttons{
+  margin-top: 0px;
+}
+
+/* -------------------------------------------------RESPONSIVE----------------------------------------------- */
+
+@media (max-width:740px){
+  .sidebar{
+    max-width: 60% !important;
+    right: 0px;
+    z-index: 400;
+    position: fixed;
+
+  }
+
+  .body-content{
+    padding-top: 10px ;
+  }
+
+  .sidebar::before{
+    position: fixed ;
+    content: "";
+    width: 100%;
+    left: 0px;
+    background: black;
+    opacity: .7;
+    height: 100%;
+    z-index: -1;
+  }
+
+  .body-content{
+    width: 100%;
+  }
+
+  .Slider-Table{
+    overflow-x: scroll !important;
+  }
+
+  .image-cell-slider{
+    width: 140px !important;
+  }
+
+  .image-parent-slider .image-container-slider{
+    max-width: 60px !important;
+  }
+
+  .gallery {
+    overflow: scroll;
+    width: 370px !important;
+  }
+
+  .Header{
+    .heading{
+      font-size: 23px;
+    }
+  }
+
+  tr .image-cell{
+    width: 160px !important;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .App .body-cm{
+    width: 100%;
+  }
+
+  .allinput-update{
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .form-gruop-update{
+    width: 100%;
+
+    input{
+      width: 100%;
+    }
+  }
+
+  .main-add{
+    width: 100% !important;
+    ;
+  }
+
+  .Flex-Input_General{
+    flex-direction: column;
+  }
+
+   .Input_Box-General{
+    width: 100% !important;
+    padding: 0px !important;
+  }
+
+  .Input-Fill-Box{
+    padding: 0px !important;
+  }
+
+  .news-form-group{
+    flex-direction: column;
+    align-items: start !important;
+  }
+
+  .Upload-form{
+    background-color: #f1f1f1 !important;
+  }
+
+  .description-box{
+    height: 42px !important;
+  }
+
+}
+
+.sidebar-ul{
+  min-height: 100vh;
+}
+
 

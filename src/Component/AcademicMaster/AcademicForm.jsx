@@ -89,13 +89,13 @@ const AcademicForm = () => {
     }
 
     return (
-        <div className="container  ">
+        <div className="container">
             <form className="upload-form !justify-end !p-[7px] !bg-[#f8f8f8] border !border-[#eee]" onSubmit={(e) => handlesubmit(e)}>
 
                 {/* DESIGN ALL INPUT */}
                 <div className={`w-full sm:flex-wrap h-auto flex items-center justify-start`}>
 
-                    <div className="form-group sm:min-w-full min-w-[150px] max-w-auto  flex flex-col p-[5px] !items-start justify-center">
+                    <div className="form-group  sm:min-w-full min-w-[150px] max-w-auto  flex flex-col p-[5px] !items-start justify-center sm:!m-0">
                         <label htmlFor="name" className={`text-[12px] font-bold `}>Event Title</label>
                         <input
                             type="text"
@@ -108,7 +108,7 @@ const AcademicForm = () => {
                         />
                     </div>
 
-                    <div className="form-group sm:min-w-full min-w-[150px] max-w-auto  flex flex-col p-[5px] !items-start justify-center">
+                    <div className="form-group sm:min-w-full min-w-[150px] max-w-auto  flex flex-col p-[5px] !items-start justify-center sm:!m-0">
                         <label htmlFor="name" className={`text-[12px] font-bold `}>Event Video URL</label>
                         <input
                             type="text"
@@ -122,7 +122,7 @@ const AcademicForm = () => {
                     </div>
 
 
-                    <div className="form-group sm:min-w-full min-w-[150px] max-w-auto  flex flex-col p-[5px] !items-start justify-center">
+                    <div className="form-group sm:min-w-full min-w-[150px] max-w-auto  flex flex-col p-[5px] !items-start justify-center sm:!m-0">
                         <label htmlFor="name" className={`text-[12px] font-bold `}>File</label>
                         <input
                             type="file"
@@ -130,13 +130,13 @@ const AcademicForm = () => {
                             id="name"
                             // defaultValue={UpdateCMTitle}
                             onChange={(e) => UpdateAMId != null ? setUpdateAMFile(e.target.files[0]) : setFile(e.target.files[0])}
-                            className={`!h-[40px] sm:!w-full !w-[200px]`}
+                            className={`!h-[40px]  !w-[200px] sm:!w-[140px]`}
                             required
                         />
                     </div>
 
 
-                    <div className="form-group min-w-[150px] sm:!w-full max-w-auto  flex flex-col p-[5px] !items-start justify-center">
+                    <div className="form-group sm:!m-0 min-w-[150px] sm:!w-full max-w-auto  flex flex-col p-[5px] !items-start justify-center">
                         <label htmlFor="image" className={`text-[12px] font-bold `}>Status</label>
                         <select id='select' onChange={(e) => e.target.value == "True" ? UpdateAMId != null ? setUpdateAMVideoStatus(true) : setStatus(true) : UpdateAMId != null ? setUpdateAMVideoStatus(false) : setStatus(false)} className={`select select-cm sm:!w-full`}>
 

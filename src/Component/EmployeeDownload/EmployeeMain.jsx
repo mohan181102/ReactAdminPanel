@@ -141,7 +141,7 @@ const EmployeeMain = () => {
     }
 
     return (
-        <div className="gallery !bg-[#eee]">
+        <div className="gallery !bg-[#eee] w-full ">
             {/* ------------download-------------- */}
             <div className={`w-full h-auto py-[10px] flex items-center justify-end`}>
                 <button onClick={handledownloadexcel} className={`w-auto h-auto px-[15px] py-[5px] bg-green-400 text-white flex items-center justify-center rounded-md`}>
@@ -149,24 +149,26 @@ const EmployeeMain = () => {
                 </button>
             </div>
             {alldata?.length != 0 ? (
-                <table>
-                    <thead>
-                        <th>Sno.</th>
-                        <th>Name</th>
-                        <th>FirmName</th>
-                        <th>Experience</th>
-                        <th>Mail</th>
-                        <th>Position</th>
-                        <th>Salary</th>
-                        <th>ContactNo</th>
-                        <th>OfficeNo</th>
-                        <th>Location</th>
-                        <th>Action</th>
-                    </thead>
-                    <tbody>
-                        {EveryRow()}
-                    </tbody>
-                </table>
+                <div className={`w-full overflow-x-scroll`}>
+                    <table>
+                        <thead>
+                            <th>Sno.</th>
+                            <th>Name</th>
+                            <th>FirmName</th>
+                            <th>Experience</th>
+                            <th>Mail</th>
+                            <th>Position</th>
+                            <th>Salary</th>
+                            <th>ContactNo</th>
+                            <th>OfficeNo</th>
+                            <th>Location</th>
+                            <th>Action</th>
+                        </thead>
+                        <tbody>
+                            {EveryRow()}
+                        </tbody>
+                    </table>
+                </div>
             ) : (
                 <div className="text-center">No Albums! Please Create One</div>
             )}

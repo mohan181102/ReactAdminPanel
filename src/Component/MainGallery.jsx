@@ -250,22 +250,24 @@ function Maingallery() {
         <td className={`border border-[#ccc]`}>{index + 1}</td>
         <td className="Name border border-[#ccc]">{albumName}</td>
         <td className="image-cell border border-[#ccc] !bg-[#f8f8f8]">
-          {groupedAlbums[albumName].map((image, imageIndex) => (
-            <div key={imageIndex} className="image-parent   bg">
-              <img
-                className="image-container"
-                src={image.Imagepath}
-                alt={`Image ${imageIndex}`}
-                style={{ width: "100px", height: "100px", margin: "5px" }}
-              />
-              <button
-                className="delete-button"
-                onClick={() => handleDelete(image.Id)}
-              >
-                <Icon icon="material-symbols:delete-outline" />
-              </button>
-            </div>
-          ))}
+          <div className={`flex image-cell-div`}>
+            {groupedAlbums[albumName].map((image, imageIndex) => (
+              <div key={imageIndex} className="image-parent   bg">
+                <img
+                  className="image-container"
+                  src={image.Imagepath}
+                  alt={`Image ${imageIndex}`}
+                  style={{ width: "100px", height: "100px", margin: "5px" }}
+                />
+                <button
+                  className="delete-button"
+                  onClick={() => handleDelete(image.Id)}
+                >
+                  <Icon icon="material-symbols:delete-outline" />
+                </button>
+              </div>
+            ))}
+          </div>
         </td>
         <td className={`border border-[#ccc]`}>
           <div className="buttons">

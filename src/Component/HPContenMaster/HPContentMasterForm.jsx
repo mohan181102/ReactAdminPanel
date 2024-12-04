@@ -34,6 +34,7 @@ const HPContentMasterForm = () => {
         }
         console.log(Backend_Url)
         try {
+            debugger
             const form = new FormData()
             form.append('title', Title)
             form.append('status', Status)
@@ -55,11 +56,14 @@ const HPContentMasterForm = () => {
             )
                 .then((res) => res.status == 200 ? window.alert("Successfully created Content") : null)
                 .then(() => window.location.reload())
-                .catch((err) => window.alert("Error creating Content", err));
+                .catch((err) => {
+                    console.log(err.message)
+                    alert(err.response.data.message)
+                });
 
         } catch (error) {
             console.log(error)
-            window.alert("Error creating Content", error);
+            window.alert(error.message);
         }
     }
 

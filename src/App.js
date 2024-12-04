@@ -46,12 +46,14 @@ import JsonObject from "./Component/JsonObject/JsonObject";
 import Employee from "./Component/EmployeeDownload/Employee";
 import Careermain from "./Component/Career/Careermain";
 import Career from "./Component/Career/Career";
+import CurrentOp from "./Component/CurrentOp/CurrentOp";
+import Walkon from "./Component/Walkon/Walkon";
 
 
 function App() {
   const location = useLocation()
   const navigate = useNavigate()
-  // const location = useLocation()
+  const [sidebartogle, setsidebartogle] = useState(false)
   const [cookie, setCookie, removeCookie] = useCookies(['token'])
   const [AllowField, setallowfield] = useState([])
   const [tokendata, settokendata] = useState(null)
@@ -60,88 +62,88 @@ function App() {
     // <div className="App">
 
     <>
-      {cookie.token && <TopHeader />}
-      <div className={`w-full h-[50px] `}></div>
+      {cookie.token && <TopHeader sidebartogle={sidebartogle} setsidebartogle={setsidebartogle} />}
+      <div className={`w-full h-[50px]  `}></div>
 
       <Routes>
         {/* <Route path="/" element={<Authentication><Gallery /></Authentication>} /> */}
         <Route path="/login" element={<Login />} />
 
         <Route path="/gallery" element={
-          <Authentication>
+          <Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle} >
             <RouteAccessCheck>
               <Gallery />
             </RouteAccessCheck></Authentication>
         } />
 
-        <Route path="/pricemaster" element={<Authentication>
+        <Route path="/pricemaster" element={<Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
           <RouteAccessCheck>
             <Pricemaster />
           </RouteAccessCheck>
         </Authentication>} />
 
-        <Route path="/slider" element={<Authentication>
+        <Route path="/slider" element={<Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
           <RouteAccessCheck>
             <Slider />
           </RouteAccessCheck>
         </Authentication>} />
 
-        <Route path="/newsnotice" element={<Authentication>
+        <Route path="/newsnotice" element={<Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
           <RouteAccessCheck>
             <Newsandnotice />
           </RouteAccessCheck>
         </Authentication>} />
 
-        <Route path="/flashnews" element={<Authentication>
+        <Route path="/flashnews" element={<Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
           <RouteAccessCheck>
             <Flashnews />
           </RouteAccessCheck>
         </Authentication>} />
 
-        <Route path="/GeneralSetting" element={<Authentication>
+        <Route path="/GeneralSetting" element={<Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
           <RouteAccessCheck>
             <GeneralSetting />
           </RouteAccessCheck>
         </Authentication>} />
 
-        <Route path="/Event" element={<Authentication><RouteAccessCheck>
+        <Route path="/Event" element={<Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}><RouteAccessCheck>
           <Event />
         </RouteAccessCheck>
         </Authentication>} />
 
-        <Route path="/Download" element={<Authentication>
+        <Route path="/Download" element={<Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
           <RouteAccessCheck>
             <Download />
           </RouteAccessCheck>
         </Authentication>} />
 
-        <Route path="/testimonials" element={<Authentication>
+        <Route path="/testimonials" element={<Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
           <RouteAccessCheck>
             <Testimonials />
           </RouteAccessCheck>
         </Authentication>} />
 
-        <Route path="/" element={<Authentication><Dashboard /></Authentication>} />
+        <Route path="/" element={<Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}><Dashboard /></Authentication>} />
 
-        <Route path="/videoMaster" element={<Authentication>
+        <Route path="/videoMaster" element={<Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
           <RouteAccessCheck>
             <VideoMaster />
           </RouteAccessCheck>
         </Authentication>} />
 
-        <Route path="/homepageBodycard" element={<Authentication><RouteAccessCheck>
+        <Route path="/homepageBodycard" element={<Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}><RouteAccessCheck>
           <HPBodyCard />
         </RouteAccessCheck>
         </Authentication>} />
 
-        <Route path="/homepage/contentmaster" element={<Authentication>
+        <Route path="/homepage/contentmaster" element={<Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
           <RouteAccessCheck>
             <HPContentMaster />
           </RouteAccessCheck>
         </Authentication>} />
 
         <Route path="/jsonobject" element={
-          <Authentication>
+          <Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
             <RouteAccessCheck>
               <JsonObject />
             </RouteAccessCheck>
@@ -150,76 +152,91 @@ function App() {
 
 
         <Route path="/tcissued" element={
-          <Authentication>
+          <Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
             <RouteAccessCheck>
               <TCIssued />
             </RouteAccessCheck>
           </Authentication>} />
 
+        <Route path="/currentop" element={
+          <Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
+            <RouteAccessCheck>
+              <CurrentOp />
+            </RouteAccessCheck>
+          </Authentication>} />
+
+        <Route path="/walkon" element={
+          <Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
+            <RouteAccessCheck>
+              <Walkon />
+            </RouteAccessCheck>
+          </Authentication>
+        } />
+
         <Route path="/contact" element={
-          <Authentication>
+          <Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
             <RouteAccessCheck>
               <Contact />
             </RouteAccessCheck>
           </Authentication>} />
 
         <Route path="/employee" element={
-          <Authentication>
+          <Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
             <RouteAccessCheck>
               <Employee />
             </RouteAccessCheck>
           </Authentication>} />
 
         <Route path="/career" element={
-          <Authentication>
+          <Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
             <RouteAccessCheck>
               <Career />
             </RouteAccessCheck>
           </Authentication>} />
 
-        <Route path="/results" element={<Authentication>
+        <Route path="/results" element={<Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
           <RouteAccessCheck>
             <Results />
           </RouteAccessCheck>
         </Authentication>} />
 
-        <Route path="/menumaster" element={<Authentication>
+        <Route path="/menumaster" element={<Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
           <RouteAccessCheck>
             <Menumaster />
           </RouteAccessCheck>
         </Authentication>} />
 
-        <Route path="/client" element={<Authentication>
+        <Route path="/client" element={<Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
           <RouteAccessCheck>
             <Client />
           </RouteAccessCheck>
         </Authentication>} />
 
-        <Route path="/pageviewmaster" element={<Authentication>
+        <Route path="/pageviewmaster" element={<Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
           <RouteAccessCheck>
             <PageViewMAster />
           </RouteAccessCheck>
         </Authentication>} />
 
-        <Route path="/academicmaster" element={<Authentication>
+        <Route path="/academicmaster" element={<Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
           <RouteAccessCheck>
             <AcademicMaster />
           </RouteAccessCheck>
         </Authentication>} />
 
-        <Route path="/coursemaster" element={<Authentication>
+        <Route path="/coursemaster" element={<Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
           <RouteAccessCheck>
             <CourseMaster />
           </RouteAccessCheck>
         </Authentication>} />
 
-        <Route path="/footer" element={<Authentication>
+        <Route path="/footer" element={<Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
           <RouteAccessCheck>
             <Footer />
           </RouteAccessCheck>
         </Authentication>} />
 
-        <Route path="/fontawesome" element={<Authentication>
+        <Route path="/fontawesome" element={<Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
           <RouteAccessCheck>
             <FontAwesome />
           </RouteAccessCheck>
@@ -227,67 +244,67 @@ function App() {
 
         <Route path="/creteCompany" element={<CompanySignup />} />
 
-        <Route path="/" element={<Authentication>
+        <Route path="/" element={<Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
           <RouteAccessCheck>
             <Dashboard />
           </RouteAccessCheck>
         </Authentication>} />
 
-        <Route path="/frontendpage" element={<Authentication>
+        <Route path="/frontendpage" element={<Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
           <RouteAccessCheck>
             <FrontEndPage />
           </RouteAccessCheck>
         </Authentication>} />
 
-        <Route path="/dashboardcard" element={<Authentication>
+        <Route path="/dashboardcard" element={<Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
           <RouteAccessCheck>
             <DashboardCard />
           </RouteAccessCheck>
         </Authentication>} />
 
-        <Route path="/headertop" element={<Authentication>
+        <Route path="/headertop" element={<Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
           <RouteAccessCheck>
             <HeaderTopMaster />
           </RouteAccessCheck>
         </Authentication>} />
 
-        <Route path="/auth" element={<Authentication>
+        <Route path="/auth" element={<Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
           <RouteAccessCheck>
             <UserAuthentication />
           </RouteAccessCheck>
         </Authentication>} />
 
-        <Route path="/flash-news" element={<Authentication>
+        <Route path="/flash-news" element={<Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
           <RouteAccessCheck>
             <Flashnews />
           </RouteAccessCheck>
         </Authentication>} />
 
-        <Route path="/productMaster" element={<Authentication>
+        <Route path="/productMaster" element={<Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
           <RouteAccessCheck>
             <ProductMaster />
           </RouteAccessCheck>
         </Authentication>} />
 
-        <Route path="/product-category-master" element={<Authentication>
+        <Route path="/product-category-master" element={<Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
           <RouteAccessCheck>
             <ProductCategoryMaster />
           </RouteAccessCheck>
         </Authentication>} />
 
-        <Route path="/advertismentmaster" element={<Authentication>
+        <Route path="/advertismentmaster" element={<Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
           <RouteAccessCheck>
             <AdvertisementMaster />
           </RouteAccessCheck>
         </Authentication>} />
         {/* <Route path="/usercreate" element={<UserCreate />} /> */}
-        <Route path="UserCreate" element={<Authentication>
+        <Route path="UserCreate" element={<Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
           <RouteAccessCheck>
             <UserCreateForm />
           </RouteAccessCheck>
         </Authentication>} />
 
-        <Route path="/blacklisted" element={<Authentication>
+        <Route path="/blacklisted" element={<Authentication sidebartogle={sidebartogle} setsidebartogle={setsidebartogle}>
           <RouteAccessCheck>
             <BlacklistedUser />
           </RouteAccessCheck>

@@ -105,17 +105,21 @@ const UserAuthenticationForm = () => {
 
     return (
         <>
-            <div className={`w-full min-h-[90px] p-[10px] rounded-md flex items-center justify-center bg-[#bbbbbb]`}>
+            <div className={`w-full min-h-[90px] p-[10px] rounded-md flex items-center justify-center bg-[#ededed]`}>
                 {/*form  */}
                 <form onSubmit={(e) => SetallowField(e)} className={`w-full h-full flex items-center justify-start gap-[30px]  `}>
                     {/* select employee */}
-                    <select className={` !w-[400px] focus:border-2 focus:border-[#269abc]  rounded-md`} onChange={(e) => changeuser(e.target.value)}>
+                    <select className={` !w-[400px] outline-none rounded-md`} onChange={(e) => changeuser(e.target.value)}>
                         <option className={`text-[15px]  `}>--select--</option>
                         {
                             AllUser?.map((user) => {
                                 return (
                                     <>
-                                        <option className={` !border !border-[#bbbbbb] text-[15px] `}>{user.Username}</option>
+                                        <option className={` !border relative !border-[#bbbbbb] text-[15px] `}>
+                                            {user.Username}
+
+
+                                        </option>
                                     </>
                                 )
                             })

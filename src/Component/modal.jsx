@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Modal.css";
 // import ImageUpload from './Imageupload';
 
-const Modal = ({ sliderId, show, onClose, onSubmit, imageName, setNewName }) => {
+const Modal = ({ sliderId, show, onClose, onSubmit, imageName, setNewName, fetchSlider }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   if (!show) {
     return null;

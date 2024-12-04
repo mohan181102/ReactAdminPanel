@@ -5,7 +5,7 @@ import { Icon } from "@iconify/react";
 import "./Imageupload.css";
 import { useCookies } from "react-cookie";
 
-const ImageUpload = ({ name, endpoint }) => {
+const ImageUpload = ({ name, endpoint, fetchSlider }) => {
   const [Name, setName] = useState("");
   const [imgdata, setImgdata] = useState(null);
   const [cookie, setCookie, removeCookie] = useCookies(['token'])
@@ -52,17 +52,18 @@ const ImageUpload = ({ name, endpoint }) => {
       setName(" ");
       setImgdata(" ");
       document.getElementById('image').value = '';
-      window.location.reload();
+      fetchSlider()
+      // window.location.reload();
     } catch (error) {
       console.error("Error uploading image:", error);
-      alert("Error uploading image");
+      alert(error.response.data.error);
     }
   };
 
   return (
     <div className="container">
       <form className="upload-form !justify-end !p-[7px] !bg-[#f8f8f8] border !border-[#eee]" onSubmit={handleSubmit}>
-        <div className={`w-full h-auto flex items-center justify-start`}>
+        <div className={`w-full sm:flex-col sm:items-start h-auto flex items-center justify-start`}>
           <div className="form-group min-w-[150px] max-w-auto  flex flex-col p-[5px] !items-start justify-center">
             <label htmlFor="name" className={`text-[12px] font-bold `}>{name}</label>
             <input

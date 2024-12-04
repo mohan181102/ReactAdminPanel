@@ -10,7 +10,7 @@ import Backend_Url from '../../config/config'
 import { jwtDecode } from 'jwt-decode'
 import UserCreateForm from '../UserCreateForm/UserCreateForm'
 
-const TopHeader = () => {
+const TopHeader = ({ sidebartogle, setsidebartogle }) => {
     const [dropdown, setshowdropdown] = useState(null)
     const [allowfield, SetallowField] = useState([])
     const navigate = useNavigate()
@@ -20,18 +20,24 @@ const TopHeader = () => {
     const [Username, setUsername] = useState(null)
     const [UserCreateToggle, setUserCreateToggle] = useState(false)
 
+    useEffect(() => {
+        console.log(allowfield)
+
+    }, [allowfield])
+
+
     const setting = [
         {
             name: "General Settings",
             icon: "icon-park-solid:setting",
             navigate: "/GeneralSetting",
-            allow: allowfield.includes("General Settings")
+            allow: allowfield.includes("General Setting") || allowfield.includes("all")
         },
         {
             name: "Category Master",
             icon: "ic:twotone-category",
             navigate: "/menumaster",
-            allow: allowfield.includes("Category Master")
+            allow: allowfield.includes("Menu Master") || allowfield.includes("all")
         },
         {
             name: "User Authentication",
@@ -49,43 +55,43 @@ const TopHeader = () => {
             name: "Iconify",
             icon: "simple-icons:iconify",
             navigate: "/fontawesome",
-            allow: allowfield.includes("Iconify")
+            allow: allowfield.includes("Iconify") || allowfield.includes("all")
         },
         {
             name: "Dashboard Pages",
             icon: "fluent:board-28-filled",
             navigate: "/dashboardpage",
-            allow: allowfield.includes("Dashboard Pages")
+            allow: allowfield.includes("Dashboard Pages") || allowfield.includes("all")
         },
         {
             name: "Front end page",
             icon: "fluent-mdl2:page-solid",
             navigate: "/frontendpage",
-            allow: allowfield.includes("Front end page")
+            allow: allowfield.includes("Front end page") || allowfield.includes("all")
         },
         {
             name: "HP Body Cards",
             icon: "fluent-mdl2:page-solid",
             navigate: "/homepageBodycard",
-            allow: allowfield.includes("HP Body Cards")
+            allow: allowfield.includes("HP Body Cards") || allowfield.includes("all")
         },
         {
             name: "Dashboard Cards",
             icon: "fluent-mdl2:page-solid",
             navigate: "/dashboardcard",
-            allow: allowfield.includes("Dashboard Cards")
+            allow: allowfield.includes("Dashboard Cards") || allowfield.includes("all")
         },
         {
             name: "Footer Master",
             icon: "fluent-mdl2:page-solid",
             navigate: "/footer",
-            allow: allowfield.includes("Footer Master")
+            allow: allowfield.includes("Footer Master") || allowfield.includes("all")
         },
         {
             name: "Footer",
             icon: "fluent-mdl2:page-solid",
             navigate: "/footer",
-            allow: allowfield.includes("Footer")
+            allow: allowfield.includes("Footer") || allowfield.includes("all")
         },
         {
             name: "HP Body Cards",
@@ -97,13 +103,13 @@ const TopHeader = () => {
             name: "Clients",
             icon: "fluent-mdl2:page-solid",
             navigate: "/client",
-            allow: allowfield.includes("Clients")
+            allow: allowfield.includes("Clients") || allowfield.includes("all")
         },
         {
             name: "HP Header Top",
             icon: "fluent-mdl2:page-solid",
             navigate: "/headertop",
-            allow: allowfield.includes("HP Header Top")
+            allow: allowfield.includes("HP Header Top") || allowfield.includes("all")
         },
 
     ]
@@ -185,7 +191,7 @@ const TopHeader = () => {
                             <Icon icon="icon-park-solid:setting" className={`text-[20px]`} />
                             <Icon className={`text-sm`} icon="eva:arrow-down-fill" />
                         </div>
-                        <div className={`absolute border  border-[#eee] top-[50px] flex items-center justify-start text-left flex-col h-auto z-20 ${dropdown == "setting" ? "block" : "hidden"} bg-[#f8f8f8]  min-w-[100px] right-[10px] h-auto p-[10px]`}>
+                        <div className={`absolute overflow-y-scroll  border  border-[#eee] top-[50px] flex items-center justify-start text-left flex-col h-[500px] z-20 ${dropdown == "setting" ? "block" : "hidden"} bg-[#f8f8f8]  min-w-[100px] right-[10px] h-auto p-[10px]`}>
                             {
                                 setting.map((item, index) => {
                                     if (loginUser.Urole == 'staff' && item.name == "User Authentication") {
@@ -195,6 +201,7 @@ const TopHeader = () => {
                                     if (item.name == "User Blacklisted" && loginUser.Urole == "staff") {
                                         return null
                                     }
+
                                     return (
                                         <div key={index} onClick={() => item.allow || LoginUserName != 'Admin' ? navigate(item.navigate) : alert("Not allow to access this setting!")} className={`w-auto cursor-pointer ${item.allow || loginUser.Urole == 'Admin' ? "" : " opacity-50"} font-bold  min-w-[200px] text-[15px] hover:bg-[#e7e7e7] h-auto flex items-center justify-start gap-2 p-[10px] text-sm`}>
                                             <Icon icon={item.icon} />
@@ -236,10 +243,12 @@ const TopHeader = () => {
                     </div>
 
                     {/* responsive btn */}
-                    <button onClick={() => setMobileToggle((prev) => !prev)} className={` hidden text-[#23527c] w-[50px] sm:flex  items-center justify-center h-[50px] text-xl bg-transparent top-[65px] z-20 right-[20px]`}>
-                        <Icon
-                            icon={"fa:bars"}
-                        />
+                    <button onClick={() => setsidebartogle((prev) => !prev)} className={` hidden text-[#23527c] w-[50px] sm:flex  items-center justify-center h-[50px] text-xl bg-transparent top-[65px] z-20 right-[20px]`}>
+                        {
+                            !sidebartogle ? <Icon
+                                icon={"fa:bars"}
+                            /> : <Icon icon="icomoon-free:cross" />
+                        }
                     </button>
                 </div>
             </div>

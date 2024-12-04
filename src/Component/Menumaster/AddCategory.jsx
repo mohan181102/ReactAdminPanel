@@ -74,7 +74,7 @@ const AddCategory = ({ toggle, settoggle, formtitle, page = false, GruopName = n
             defaultValue: UpdateMMImage != null ? UpdateMMImage : null
         }
     ]
-    
+
     if (toggle) {
         return null;
     }
@@ -111,7 +111,7 @@ const AddCategory = ({ toggle, settoggle, formtitle, page = false, GruopName = n
                 body: form
             })
                 .then((res) => res.status == 200 && window.alert("Successfully created!"))
-                .then(() => window.location.reload())
+            // .then(() => window.location.reload())
         } catch (error) {
             console.log(error)
         }
@@ -165,6 +165,10 @@ const AddCategory = ({ toggle, settoggle, formtitle, page = false, GruopName = n
         settoggle(false)
     }
 
+    const emptyimage = () => {
+        setImagePreview(null)
+        setUpdateMMImage(null)
+    }
 
     return (
         <div className={`main-add ${settoggle ? "" : "close-main-add"} flex-col z-50 overflow-auto gap-8 fixed w-full h-full top-0 left-0 py-8 flex items-start justify-center`}>
@@ -230,11 +234,17 @@ const AddCategory = ({ toggle, settoggle, formtitle, page = false, GruopName = n
                             />
                         )}
                         {item.type === "preview" && (
-                            <img
-                                className="w-full h-32 object-cover border border-gray-300 rounded-md"
-                                src={UpdateMMId != null ? UpdateMMImage : ImagePreview}
-                                alt="Preview"
-                            />
+                            <React.Fragment>
+
+                                <img
+                                    className="w-full h-32 object-cover border border-gray-300 rounded-md"
+                                    src={UpdateMMId != null ? UpdateMMImage : ImagePreview}
+                                    alt="Preview"
+                                />
+                                <button onClick={() => emptyimage()} type='button' className={` cursor-pointer hover:text-red-400 flex items-center justify-center font-[500]`}>
+                                    Clear
+                                </button>
+                            </React.Fragment>
                         )}
                     </div>
                 ))}

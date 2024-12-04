@@ -8,9 +8,9 @@ const Download = () => {
     return (
         <>
             <div className="App">
-                <div className="sidebar fixed pb-[50px]">
+                {/* <div className="sidebar fixed pb-[50px]">
                     <Sidebar />
-                </div>
+                </div> */}
                 <div className="body-content absolute w-[77%] right-0">
                     <div>
                         <div className="Header">

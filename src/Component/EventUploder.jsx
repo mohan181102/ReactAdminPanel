@@ -109,9 +109,9 @@ form-update
                     </div>
 
                     <div className="form-gruop-update">
-                        <label htmlFor="image" className='form-label-update'>Priority</label>
+                        <label htmlFor="image" className='form-label-update '>Priority</label>
                         <input
-                            className='form-input-update'
+                            className='form-input-update sm:!w-full !w-[150px]'
                             placeholder='Enter priority'
                             onChange={(e) => setPriority(e.target.value)}
                             type="number"

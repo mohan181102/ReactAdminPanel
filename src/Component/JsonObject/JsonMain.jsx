@@ -116,7 +116,7 @@ const JsonMain = () => {
                 <td className={`w-[30px] border border-[#ccc]`}>{index + 1}</td>
 
                 {/* title */}
-                <td className="Name border border-[#ccc] text-left px-[13px] w-[400px]">
+                <td className="Name border border-[#ccc] text-left px-[13px] w-[100px]">
                     <p className={`view text-red-500 flex items-center justify-start gap-1`} onClick={() => handleopen(Singleitem.JsonObject)}>
                         <Icon icon="mdi:eye-outline" />
                         View</p>
@@ -152,7 +152,7 @@ const JsonMain = () => {
                 <table>
                     <thead>
                         <tr>
-                            <th className={` `}>
+                            <th className={`!py-[5px] !px-[5px]`}>
                                 <div className="checkbox">
                                     <input
                                         type="checkbox"

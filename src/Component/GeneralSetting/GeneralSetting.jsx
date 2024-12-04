@@ -121,7 +121,14 @@ const GeneralSetting = () => {
 
             if (response) {
                 const result = await response.json();
-                window.alert(result.message)
+                if (result.error.errors) {
+                    result?.error?.errors?.map((item) => {
+                        window.alert(item.message);
+                    })
+                    return
+                } else {
+                    alert(`Form Submitted successfully`)
+                }
                 console.log('Form submitted successfully:', result);
             } else {
                 console.error('Error submitting form');
@@ -212,9 +219,9 @@ const GeneralSetting = () => {
 
     return (
         <div className="App">
-            <div className="sidebar fixed">
+            {/* <div className="sidebar fixed">
                 <Sidebar />
-            </div>
+            </div> */}
             <div className="body-content absolute w-[77%] right-0">
                 <div className="heading">
                     <h1 className="General-Setting-Head">General Setting</h1>

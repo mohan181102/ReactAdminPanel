@@ -170,6 +170,7 @@ const Newsandnotice = () => {
   //put api call
   const handleupdatemodal = async (formdata, currentid) => {
     try {
+      debugger
       // console.log(formdata)
       const response = await fetch(
         `${Backend_Url}/newsnotices/update/${currentid}`,
@@ -222,9 +223,9 @@ const Newsandnotice = () => {
 
   return (
     <div className="App">
-      <div className="sidebar fixed pb-[50px]">
+      {/* <div className="sidebar fixed pb-[50px]">
         <Sidebar />
-      </div>
+      </div> */}
       <div className="body-content absolute w-[77%] right-0">
         <div className="heading">
           <h1>News & Notice</h1>
@@ -232,11 +233,11 @@ const Newsandnotice = () => {
         <div className="Upload-form">
           <form onSubmit={handleform}>
             <div className="news-form-group">
-              <div>
+              <div className="form-gruop-update">
                 <label>Title</label>
                 <input type="text" value={Title} onChange={handletitle} />
               </div>
-              <div>
+              <div className="form-gruop-update">
                 <label>Description</label>
                 <textarea
                   className="textarea-input"
@@ -244,15 +245,15 @@ const Newsandnotice = () => {
                   onChange={handledesc}
                 />
               </div>
-              <div>
+              <div className="form-gruop-update">
                 <label>Date</label>
                 <input type="Date" value={Date} onChange={handleDate} />
               </div>
-              <div>
+              <div className="form-gruop-update">
                 <label>Image</label>
                 <input type="file" onChange={handleImage} />
               </div>
-              <div>
+              <div className="form-gruop-update">
                 <label>Status</label>
                 <select
                   id="booleanDropdown"
@@ -263,7 +264,7 @@ const Newsandnotice = () => {
                   <option value="false">False</option>
                 </select>
               </div>
-              <div>
+              <div className="form-gruop-update">
                 <label>Type</label>
                 <select id="booleanDropdown" value={Type} onChange={handleType}>
                   <option value="News">News</option>
@@ -278,14 +279,14 @@ const Newsandnotice = () => {
             </div>
           </form>
         </div>
-        <div className="form-content">
+        <div className="form-content !bg-[#efefef]">
           {Data ? (
             <table>
               <thead>
                 <th>Sno.</th>
                 <th>Title</th>
                 <th>Description</th>
-                <th>Date <div className="date-format">(yyyy-mm-dd)</div> </th>
+                <th className={``}>Date <div className="date-format">(yyyy-mm-dd)</div> </th>
                 <th>Image</th>
                 <th>Status</th>
                 <th>Type</th>
@@ -306,7 +307,7 @@ const Newsandnotice = () => {
                           onClick={() => handleUpDate(item)}
                         >
                           <Icon icon="fluent:clipboard-text-edit-32-filled" />
-                        </button>{" "}
+                        </button>
                         {index + 1}
                       </div>
                     </td>

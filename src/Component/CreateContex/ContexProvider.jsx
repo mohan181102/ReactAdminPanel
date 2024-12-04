@@ -189,10 +189,38 @@ const UpdateProvider = function ({ children }) {
     // NAVIGATE
     const [MobileToggle, setMobileToggle] = useState(false)
 
+    // --------------------------currentop-------------------------------
+    const [COHeading, setCOheading] = useState(null)
+    const [COlocation, setCOlocation] = useState(null)
+    const [COExpe, setCOExpe] = useState(null)
+    const [COPost, setCOPost] = useState(null)
+    const [COSalary, setCOSalary] = useState(null)
+    const [CODate, setCODate] = useState(null)
+    const [COKey, setKey] = useState(null)
+    const [CODescription, setCODescription] = useState(null)
+    const [COUpdateID, setCOUpdateID] = useState(null)
+
+    const [UpdateMainText, setUpdatemaintex] = useState(null)
+    const [UpdateSubtext, setUpdatesubtext] = useState(null)
+    const [UpdateId, setUpdateId] = useState(null)
 
     return (
 
         <UpdateContex.Provider value={{
+            COHeading, setCOheading,
+            COlocation, setCOlocation,
+            COExpe, setCOExpe,
+            COPost, setCOPost,
+            COSalary, setCOSalary,
+            CODate, setCODate,
+            COKey, setKey,
+            CODescription, setCODescription,
+            COUpdateID, setCOUpdateID,
+
+            UpdateMainText, setUpdatemaintex,
+            UpdateSubtext, setUpdatesubtext,
+            UpdateId, setUpdateId,
+
             MobileToggle, setMobileToggle,
             jsonupdateID, setjsonupdateID,
             AllowField, setAllowField,

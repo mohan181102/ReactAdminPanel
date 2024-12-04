@@ -27,7 +27,7 @@ const UpdateEvent = ({ sliderId, show, onClose, onSubmit, imageName, EditId }) =
             id: parseInt(EditId),
             newStatus: newStatus,
             newPriority: newPriority,
-            Image: newImage
+            Image: selectedFile
         },
             {
                 headers: {

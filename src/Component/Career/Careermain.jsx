@@ -145,7 +145,7 @@ const Careermain = () => {
     }
 
     return (
-        <div className="gallery !bg-[#eee]">
+        <div className="gallery !bg-[#fbfbfb]">
             {/* ------------download-------------- */}
             <div className={`w-full h-auto py-[10px] flex items-center justify-end`}>
                 <button onClick={handledownloadexcel} className={`w-auto h-auto px-[15px] py-[5px] bg-green-400 text-white flex items-center justify-center rounded-md`}>
@@ -153,24 +153,26 @@ const Careermain = () => {
                 </button>
             </div>
             {alldata?.length != 0 ? (
-                <table>
-                    <thead>
-                        <th>Sno.</th>
-                        <th>Name</th>
-                        <th>Mobile_No</th>
-                        <th>Email</th>
-                        <th>Qualification</th>
-                        <th>Designation</th>
-                        <th>Experience</th>
-                        <th>Expected_Salary</th>
-                        <th>Address</th>
+                <div className={`w-full overflow-x-scroll !h-[85%]`}>
+                    <table>
+                        <thead>
+                            <th>Sno.</th>
+                            <th>Name</th>
+                            <th>Mobile_No</th>
+                            <th>Email</th>
+                            <th>Qualification</th>
+                            <th>Designation</th>
+                            <th>Experience</th>
+                            <th>Expected_Salary</th>
+                            <th>Address</th>
 
-                        <th>Action</th>
-                    </thead>
-                    <tbody>
-                        {EveryRow()}
-                    </tbody>
-                </table>
+                            <th>Action</th>
+                        </thead>
+                        <tbody>
+                            {EveryRow()}
+                        </tbody>
+                    </table>
+                </div>
             ) : (
                 <div className="text-center">No Albums! Please Create One</div>
             )}

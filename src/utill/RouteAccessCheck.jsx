@@ -118,6 +118,14 @@ const RouteAccessCheck = ({ children }) => {
         {
             name: "News & Notice",
             route: "/newsnotice"
+        },
+        {
+            name: "CurrentOpenning",
+            route: "/currentop"
+        },
+        {
+            name: "Walk On",
+            route: "/walkon"
         }
 
     ]

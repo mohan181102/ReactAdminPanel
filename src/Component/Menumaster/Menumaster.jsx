@@ -10,15 +10,15 @@ const Menumaster = () => {
 
     return (
         <div className="App ">
-            <div className="sidebar fixed">
+            {/* <div className="sidebar fixed">
                 <Sidebar />
-            </div>
+            </div> */}
             <div className="body-content body-cm absolute w-[77%] right-0 ">
                 <div>
                     <div className="Header">
                         <h1 className="heading">Menu Master</h1>
                     </div>
-                    <div className="form px-[50px]">
+                    <div className="form px-[50px] sm:px-[10px] sm:pt-[15px]">
                         <button onClick={() => setshowform(!showform)} className={` w-auto h-auto px-[10px] py-[5px] flex items-center justify-center bg-[#337ab7] text-white rounded-md`}>
                             <Icon
                                 icon="mingcute:plus-fill"

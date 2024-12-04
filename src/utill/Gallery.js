@@ -172,7 +172,7 @@ function Gallery() {
                 {imagePaths.map((imagePath, index) => (
                   <div key={index} className="image-parent">
                     <img
-                      className="image-container"
+                      className="image-container !h-[50px]"
                       src={imagePath.Imagepath}
                       alt={`Image ${index}`}
                       style={{ width: "100px", margin: "5px" }}
@@ -200,7 +200,7 @@ function Gallery() {
               <td className="Name">{Albumname1}</td>
               <td className="image-cell">
                 {imagePaths1.map((imagePath, index) => (
-                  <div key={index} className="image-parent">
+                  <div key={index} className="image-parent !h-[50px]">
                     <img
                       className="image-container"
                       src={imagePath.Imagepath}

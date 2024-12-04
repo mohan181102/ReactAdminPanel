@@ -81,7 +81,7 @@ const TestimonialsForm = () => {
         form.append('Designation', UpdateTDesignation)
         form.append('Priority', UpdateTPriority)
         form.append('URL', UpdateTURL)
-        form.append('Image', Image != null ? Image : UpdateTImage)
+        form.append('Image', Image == null ? UpdateTImage : Image)
         form.append('Details', UpdateTDetails)
 
         console.log("form ", form)

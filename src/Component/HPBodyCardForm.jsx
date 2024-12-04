@@ -105,6 +105,7 @@ const HPBodyCardForm = () => {
 
 
 
+
     return (
         <div className="container">
             <form className="upload-form form-update !bg-[#f8f8f8] !border !border-[#ccc]" onSubmit={(e) => handleSubmit(e)}>
@@ -163,16 +164,16 @@ const HPBodyCardForm = () => {
                         />
                     </div>
 
-                    <div className="form-gruop-update !h-auto">
+                    <div style={{ height: 'auto' }} className="form-gruop-update">
                         <label htmlFor="detail">Details</label>
                         <textarea
                             type="text"
                             defaultValue={UpdateCardDetails}
                             id="url"
                             placeholder='Enter Details'
-                            className='form-input-update !h-auto !border !border-[#ccc]'
+                            className='form-input-update !border  !border-[#ccc]'
                             onChange={(e) => UpdateCardDetails != null ? setUpdateCardDetails(e.target.value) : setDetails(e.target.value)}
-                            style={{ maxHeight: "100px", maxWidth: "200px", minHeight: "30px" }}
+                            style={{ maxWidth: "200px", minHeight: "40px" }}
                             required
                         />
                     </div>

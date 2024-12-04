@@ -6,9 +6,9 @@ import FontAwesomnMain from './FontAwesomnMain'
 const FontAwesome = () => {
     return (
         <div className="App">
-            <div className="sidebar sidebar-cm">
+            {/* <div className="sidebar sidebar-cm">
                 <Sidebar />
-            </div>
+            </div> */}
             <div className="body-content body-cm">
                 <div>
                     <div className="Header">

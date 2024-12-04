@@ -175,17 +175,17 @@ const Flashnews = () => {
   */
   return (
     <div className="App">
-      <div className="sidebar fixed pb-[50px]">
+      {/* <div className="sidebar fixed pb-[50px]">
         <Sidebar />
-      </div>
+      </div> */}
       <div className="body-content absolute w-[77%] right-0">
         <div className="heading">
           <h1>FlashNews</h1>
         </div>
-        <div className="container !bg-[#f8f8f8]">
+        <div className="container !bg-white">
           <form onSubmit={handleSubmit} className="upload-form !bg-[#f8f8f8] border border-[#ccc]">
             <div className=" form-gruop-update">
-              <label className="form-label-update !w-full   !text-left">
+              <label className="form-label-update !w-full !text-left">
                 Flash News:
               </label>
               <input
@@ -245,7 +245,7 @@ const Flashnews = () => {
                 <th>Action</th>
                 <th>Sno.</th>
                 <th>Name</th>
-                <th>Date <div className="date-format">(yyyy-mm-dd)</div> </th>
+                <th className={`flex w-auto items-center justify-center border-none`}>Date <div className="date-format">(yyyy-mm-dd)</div> </th>
                 <th>Status</th>
                 <th>Priority</th>
               </thead>
@@ -265,16 +265,16 @@ const Flashnews = () => {
                           onClick={() => handleUpDate(item)}
                         >
                           <Icon icon="fluent:clipboard-text-edit-32-filled" />
-                        </button>{" "}
+                        </button>
                       </div>
                     </td>
-                    <td className={`border border-[#ccc]`}>
+                    <td className={`border !text-[15px] border-[#ccc]`}>
                       {index + 1}
                     </td>
-                    <td className={`border border-[#ccc]`}>{item.FlashNews}</td>
-                    <td className={`border border-[#ccc]`}>{item.Date}</td>
-                    <td className={`border border-[#ccc]`}>{item.Status ? 'Active' : 'Inactive'}</td>
-                    <td className={`border border-[#ccc]`}>{item.Priority}</td>
+                    <td className={`border !text-[15px] border-[#ccc]`}>{item.FlashNews}</td>
+                    <td className={`border !text-[15px] border-[#ccc]`}>{item.Date}</td>
+                    <td className={`border !text-[15px] border-[#ccc]`}>{item.Status ? 'Active' : 'Inactive'}</td>
+                    <td className={`border !text-[15px] border-[#ccc]`}>{item.Priority}</td>
                   </tr>
                 ))}
               </tbody>

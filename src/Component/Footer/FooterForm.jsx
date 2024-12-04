@@ -100,7 +100,7 @@ function FooterForm() {
     return (
         <div className="container">
             <form className="upload-form form-update !bg-[#f8f8f8] border border-[#ccc] " onSubmit={(e) => handlesubmit(e)} >
-                <div className={`allinput-update `}>
+                <div className={`allinput-update sm:!flex-col sm:items-start `}>
                     <div className="  form-gruop-update">
                         <label htmlFor="name" className='form-label-update'> Title</label>
                         <input

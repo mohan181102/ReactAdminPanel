@@ -69,6 +69,10 @@ code {
 .form-input-update {
   height: auto;
   width: 200px;
+
+  textarea{
+    width: 100% !important;
+  }
 }
 
 /* all form input */
@@ -137,6 +141,10 @@ form-label-update
   border: 1px solid #ccc;
 }
 
+th{
+  padding: 0px !important;
+  padding-left: 4px !important;
+}
 /* 
 main-body-update
 th-update 
@@ -147,4 +155,34 @@ td {
   padding: 0px !important;
   padding-left: 5px !important;
   padding-right: 5px !important;
+}
+
+img{
+  max-width: 300px !important;
+}
+
+
+.delete-button{
+  padding: 0px !important;
+}
+
+.update-button{
+  padding: 0px !important;
+  font-size: 20px !important;
+}
+
+input[type="color"]{
+  height: 30px !important;
+}
+
+.Name{
+  font-weight: 500 !important;
+} 
+
+input[type="number"]{
+  height: 45px !important;
+}
+
+.gallery{
+  height: 79vh !important;
 }

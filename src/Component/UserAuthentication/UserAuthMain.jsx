@@ -32,7 +32,9 @@ const UserAuthMain = () => {
         "Advertisment Master",
         "Product Category Master",
         "Product Master",
-        "News & Notice"
+        "News & Notice",
+        "CurrentOpenning",
+        "Walk On"
     ])
     const { AllowField, setAllowField } = useContext(UpdateContex)
 
@@ -51,7 +53,7 @@ const UserAuthMain = () => {
     const renderField = AllField.map((field, index) => {
         return (
             <>
-                <tr>
+                <tr className={`bg-[#ededed]`}>
                     <td className={`border w-[50px] border-[white]`}>
                         {index + 1}
                     </td>
@@ -77,7 +79,7 @@ const UserAuthMain = () => {
                 {AllField.length != 0 ? (
                     <table className=''>
                         <thead>
-                            <tr>
+                            <tr >
 
                                 <th className={`th`}>Sno.</th>
                                 <th className={`th flex items-center justify-start border-l border-l-white`}>Field Name</th>

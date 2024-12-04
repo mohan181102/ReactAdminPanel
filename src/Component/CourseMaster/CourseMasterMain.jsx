@@ -111,7 +111,7 @@ const CourseMasterMain = ({ allcontent, fetchdata }) => {
                         <td className={`flex items-center justify-center p-0 border border-[#ccc]`}>
                             {showparaid == Singleitem.Id ? <div onClick={() => setshowparaid("")} className={`bg-white cursor-pointer min-w-full max-w-[130px] p-[2px] h-auto overflow-x-scroll`} dangerouslySetInnerHTML={{ __html: Singleitem.TextContent }}>
 
-                            </div> : <p className={`cursor-pointer h-[60px] flex items-center justify-center font-bold text-green-500 text-[15px]`} onClick={() => setshowparaid(Singleitem.Id)}>View content</p>}
+                            </div> : <p className={`cursor-pointer h-[30px] flex items-center justify-center font-bold text-green-500 text-[15px]`} onClick={() => setshowparaid(Singleitem.Id)}>View content</p>}
 
                         </td>
 

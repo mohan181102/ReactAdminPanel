@@ -5,6 +5,7 @@ import AddCategory from './AddCategory'
 import NestedMaster from './NestedMaster'
 import UpdateContex from '../CreateContex/CreateContex'
 import { useCookies } from 'react-cookie'
+import notimage from "../../Assests/Images/Noimage.jpg"
 
 const MenumasterMain = () => {
     const [alldata, setalldata] = useState([])
@@ -42,12 +43,20 @@ const MenumasterMain = () => {
         }
     }
 
-    useEffect(() => { fetdata() }, [])
+    useEffect(() => { fetdata() },
+        [
+            toggle
+        ])
 
     const addMore = async (name) => {
         settoggle(!toggle)
         setName(name)
     }
+
+    useEffect(() => {
+        console.log(alldata)
+    }, [alldata])
+
 
     const UpdateHandler = async (item) => {
         console.log("item", item)
@@ -100,8 +109,8 @@ const MenumasterMain = () => {
                         </td>
                         <td className={`w-full gap-[5px] border border-[#ccc]  flex-col h-auto flex items-start justify-center`}>
 
-                            <div className={`w-auto  gap-[5px] h-auto flex items-center justify-start`}>
-                                <img className={`w-[80px] p-[2px] bg-white h-[20px] bg-cover overflow-hidden object-center`} src={item.Image} />
+                            <div className={`w-auto border border-[#a5a1a1de] rounded-sm mt-[10px] py-[10px] px-[7px]  gap-[5px] h-auto flex items-center justify-start`}>
+                                <img className={`w-[80px] !bg-center !object-cover p-[2px] bg-gray-300 h-[20px]   overflow-hidden  `} src={item.Image.length == 0 ? notimage : item.Image} />
                                 <h2 className={`flex items-center justify-center gap-1`}> <p className={`px-[10px] border-r border-r-black`}>{item.Category_sub}</p><p className={`${item.Status ? "text-green-500" : "text-red-500"} border-r border-r-black px-[10px]`}>{(item.Status ? "active" : "inactive")}</p></h2>
                                 <div className={`h-auto w-auto flex items-center justify-center px-[10px] border-r border-r-black gap-[5px]`}>
                                     <button onClick={() => addMore(item.Category_sub)} className={`w-auto bg-green-500 h-auto flex text-white p-[5px] items-center justify-center text-[15px]`}>
@@ -112,13 +121,15 @@ const MenumasterMain = () => {
                                 </div>
                             </div>
 
-                            <div className={`w-full   h-fit pl-[20px]`}>
-                                <NestedMaster CompareName={item.Category_sub} alldata={alldata} />
+                            {alldata.find((childitem) => childitem.GruopName == item.Category_sub) ?
+                                < div className={`w-fit border py-[8px] rounded-sm  px-[8px] border-[#a5a1a1de] h-fit mb-[8px] ml-[20px]`}>
+                                    <NestedMaster CompareName={item.Category_sub} alldata={alldata} />
 
-                            </div>
+                                </div> : null
+                            }
 
                         </td>
-                    </tr>
+                    </tr >
 
                     <AddCategory page={UpdateMMId != null ? true : false} toggle={!toggle} GruopName={Name} formtitle={Name} settoggle={() => settoggle(!toggle)} />
                 </>
@@ -128,7 +139,7 @@ const MenumasterMain = () => {
 
     return (
         <>
-            <div className="gallery !bg-[#f8f8f8] border border-[#ccc]">
+            <div className="gallery overflow-y-scroll !bg-[#f8f8f8] border border-[#ccc]">
                 {alldata.length != 0 ? (
                     <table>
                         <thead>

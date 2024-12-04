@@ -369,7 +369,7 @@ const AddPricemaster = ({ toggle, settoggle, formtitle, page = false, GruopName 
         //         </form>
         //     </div>
         // </div>
-        <div className={`main-add ${settoggle === false ? "close-main-add" : ""} flex-col z-[200] overflow-y-auto gap-8 fixed w-[100vw] h-[100vh] sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/4 overscroll-auto py-8  top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center bg-gray-100 shadow-lg rounded-lg`}>
+        <div className={`main-add ${settoggle === false ? "close-main-add" : ""} flex-col z-[200] overflow-y-auto gap-8 fixed w-[100vw] h-[100vh] sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/4 overscroll-auto py-8  top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  flex items-center justify-center bg-gray-100 shadow-lg rounded-lg`}>
             <div className="w-[70vw] h-[80vh] overflow-y-scroll rounded-lg shadow-lg bg-white p-6">
                 <div className="flex items-center justify-between mb-6">
                     <h1 className="text-xl font-bold bg-gray-800 text-white py-2 px-4 rounded-md">{formtitle || "Add Category"}</h1>

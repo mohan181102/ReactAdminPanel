@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react/dist/iconify.js'
 import Backend_Url from '../../config/config'
 import UpdateContex from '../CreateContex/CreateContex'
 import { useCookies } from 'react-cookie'
+import noimage from "../../Assests/Images/Noimage.jpg"
 
 const NestedMaster = ({ alldata, CompareName }) => {
     const [toggle, settoggle] = useState(false)
@@ -77,7 +78,7 @@ const NestedMaster = ({ alldata, CompareName }) => {
             <>
 
                 <div className={`w-auto h-auto flex gap-[5px] items-center justify-start`}>
-                    <img className={`w-[80px] h-[20px] bg-cover overflow-hidden object-center`} src={childitem.Image} />
+                    <img className={`w-[80px] border border-gray-300 h-[20px] bg-cover overflow-hidden object-cover`} src={childitem.Image ? childitem.Image : noimage} />
                     <h2 className={`flex items-center justify-center gap-1`}><p className={`px-[10px] border-r border-r-black`}>{childitem.GruopName}</p><p className={`px-[10px] border-r border-r-black`}>{childitem.Category_sub}</p><p className={`${childitem.Status ? "text-green-500" : "text-red-500"} px-[10px] border-r border-r-black`}>{(childitem.Status ? "active" : "inactive")}</p></h2>
                     <div className={`h-auto px-[10px] border-r border-r-black w-auto flex items-center justify-center gap-[5px]`}>
                         <button onClick={() => addMore(childitem.Category_sub)} className={`w-auto bg-green-500 h-auto flex text-white p-[5px] items-center justify-center text-[15px]`}>

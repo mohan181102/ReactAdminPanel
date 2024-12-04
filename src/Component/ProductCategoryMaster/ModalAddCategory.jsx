@@ -120,7 +120,7 @@ const ModalAddCategory = (props) => {
                     <h2>{isEditMode ? "Edit Category" : "Create Category"}</h2>
                 </div>
                 <div className="modal-body">
-                    <div className="form-group">
+                    <div className="form-group !items-start">
                         <div className="input-row">
                             <div className="input-box">
                                 <label htmlFor="CategoryName" className="input-label">Category/Sub Category</label>

@@ -129,9 +129,9 @@ const ProductCategoryMaster = () => {
 
     return (
         <div className="App">
-            <div className="sidebar fixed pb-[50px]">
+            {/* <div className="sidebar fixed pb-[50px]">
                 <Sidebar />
-            </div>
+            </div> */}
             <div className="body-content absolute w-[77%] right-0">
                 <div className="heading">
                     <h1 className="General-Setting-Head">Product Category Master</h1>
@@ -145,7 +145,7 @@ const ProductCategoryMaster = () => {
                     <div className="heading">
                         <h1 className="General-Setting-Head">Root Category List</h1>
                     </div>
-                    <div className="">
+                    <div className=" overflow-scroll">
                         <table>
                             <thead>
                                 <tr>
@@ -162,10 +162,10 @@ const ProductCategoryMaster = () => {
                                 {categoryList.map((category, index) => (
                                     <tr key={index}>
                                         <td className={`border border-[#bbbbbb]`}>{index + 1}</td>
-                                        <td className="Image-Product-Cate border !w-auto border-[#bbbbbb] ">
+                                        <td className="Image-Product-Cate border !w-auto  ">
                                             <div className="image-parent-slider">
                                                 <img
-                                                    className="image-container-slider"
+                                                    className="image-container-slider !h-[30px] !p-0"
                                                     src={category.Imagepaths}
                                                     alt={category.CategoryName}
                                                     width="100px"
@@ -185,7 +185,7 @@ const ProductCategoryMaster = () => {
                                         </td>
 
                                         <td className={`border border-[#bbbbbb]`}>
-                                            <div className="buttons">
+                                            <div className="buttons !mt-0">
                                                 <button
                                                     className="Add-button"
                                                     onClick={openModalCategory}

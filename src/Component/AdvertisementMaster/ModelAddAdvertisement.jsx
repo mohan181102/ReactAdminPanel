@@ -110,6 +110,9 @@ const ModelAddAdvertisement = (props) => {
         }
     };
 
+
+
+
     return (
 
         <div>
@@ -118,7 +121,7 @@ const ModelAddAdvertisement = (props) => {
                     <div className="Flex-Input_General">
                         <div className="Input_Box-Category">
                             <label className="inputName-lbl lbl-Text-Category">Category</label>
-                            <select className="Input-Fill-Box input-width-sub" type="text" name="Category" value={inputValues.Category} onChange={handleInputChange} placeholder="">
+                            <select className="Input-Fill-Box input-width-sub !p-0 outline-none" type="text" name="Category" value={inputValues.Category} onChange={handleInputChange} placeholder="">
                                 <option value="completedprojects">Completed Projects</option>
                                 <option value="ongoingprojects">On Going Projects</option>
                             </select>
@@ -133,18 +136,18 @@ const ModelAddAdvertisement = (props) => {
                         </div>
                         <div className="Input_Box-Category">
                             <label className="inputName-lbl lbl-Text-Category">Image</label>
-                            <input className="Input-Fill-Box input-width-sub" type="file" value={inputValues.Imagepaths} name="Imagepaths" onChange={handleImage} placeholder="" />
+                            <input className="Input-Fill-Box input-width-sub !p-0" type="file" value={inputValues.Imagepaths} name="Imagepaths" onChange={handleImage} placeholder="" />
                         </div>
                     </div>
                     <div className="Flex-Input_General">
                         <div className="Flex-Advertisement-cate">
                             <div className="Input_Box-Category">
                                 <label className="inputName-lbl lbl-Text-Category lbl-width-name">Priority(Ex. 0,1,2,3...)</label>
-                                <input className="Input-Fill-Box" type="text" name="Priority" value={inputValues.Priority} onChange={handleInputChange} placeholder="" />
+                                <input className="Input-Fill-Box p-0" type="text" name="Priority" value={inputValues.Priority} onChange={handleInputChange} placeholder="" />
                             </div>
                             <div className="Input_Box-Category">
-                                <label className="inputName-lbl lbl-Text-Category lbl-width-name">Status</label>
-                                <select className="Input-Fill-Box" type="text" name="Status" value={inputValues.Status} onChange={handleInputChange} placeholder="">
+                                <label className="inputName-lbl lbl-Text-Category  lbl-width-name">Status</label>
+                                <select className="Input-Fill-Box p-0 outline-none" type="text" name="Status" value={inputValues.Status} onChange={handleInputChange} placeholder="">
                                     <option value="true">True</option>
                                     <option value="false">False</option>
                                 </select>

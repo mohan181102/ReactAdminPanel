@@ -83,12 +83,12 @@ const ResultForm = () => {
         if (!confirm) {
             return
         }
-
+        debugger
         const form = new FormData();
         form.append('UpdateEventTitle', UpdateRTitle)
         form.append('UpdateStatus', UpdateRStatus)
         form.append('UpdateURL', UpdateRURL)
-        form.append('FileData', UpdateRFile)
+        form.append('FileData', File != null ? File : UpdateRFile)
 
         try {
             await fetch(`${Backend_Url}/Result/update/${UpdateRId}`, {
@@ -148,7 +148,7 @@ const ResultForm = () => {
                             id="Mname"
                             placeholder='Select File'
                             className='form-input-update'
-                            onChange={(e) => UpdateRId != null ? setUpdateRFile(e.target.files[0]) : setFile(e.target.files[0])}
+                            onChange={(e) => setFile(e.target.files[0])}
                             required
                         />
                         {

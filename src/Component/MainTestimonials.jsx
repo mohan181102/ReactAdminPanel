@@ -110,6 +110,15 @@ const MainTestimonials = () => {
 
     }
 
+    function shortpara(word = 50, full = "") {
+        debugger
+
+        const shortpara = full.slice(0, word)
+        console.log(shortpara)
+        return shortpara + "..."
+
+    }
+
 
     // ALL ROWS
     const renderTestimonials = () => {
@@ -137,7 +146,9 @@ const MainTestimonials = () => {
 
                 {/* Details */}
                 <td className="border border-[#ccc]">
-                    {Singleitem.Details}
+                    <div className={`testimonials-details`}>
+                        {shortpara(30, Singleitem.Details)}
+                    </div>
                 </td>
 
                 {/* DEsignation */}
